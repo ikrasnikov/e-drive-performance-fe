@@ -1,14 +1,7 @@
+@use '../abstracts' as *;
+
 .visually-hidden {
-  position: absolute;
-
-  overflow: hidden;
-
-  width: 1px; // stylelint-disable-line unit-disallowed-list -- standard visually-hidden pattern
-  height: 1px; // stylelint-disable-line unit-disallowed-list -- standard visually-hidden pattern
-
-  white-space: nowrap;
-
-  clip-path: inset(50%);
+  @include visually-hidden;
 }
 
 .skip-link {

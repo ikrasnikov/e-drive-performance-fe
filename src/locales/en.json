@@ -7,7 +7,35 @@
   "a11y": {
     "skipToContent": "Skip to content",
     "logoAlt": "e-drive performance",
-    "languageSwitcher": "Choose language"
+    "languageSwitcher": "Choose language",
+    "mainNavigation": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "call": "Call us"
+  },
+  "nav": {
+    "services": "Services",
+    "about": "About us",
+    "advantages": "Why us",
+    "contacts": "Contacts",
+    "book": "Book a visit"
+  },
+  "services": {
+    "diagnostics": {
+      "title": "Diagnostics"
+    },
+    "maintenance": {
+      "title": "Maintenance"
+    },
+    "repair": {
+      "title": "Repair"
+    },
+    "software": {
+      "title": "Software updates"
+    },
+    "performance": {
+      "title": "Performance"
+    }
   },
   "placeholder": {
     "eyebrow": "Specialised electric vehicle service",

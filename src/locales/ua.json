@@ -7,7 +7,35 @@
   "a11y": {
     "skipToContent": "Перейти до вмісту",
     "logoAlt": "e-drive performance",
-    "languageSwitcher": "Вибір мови"
+    "languageSwitcher": "Вибір мови",
+    "mainNavigation": "Основна навігація",
+    "openMenu": "Відкрити меню",
+    "closeMenu": "Закрити меню",
+    "call": "Зателефонуйте нам"
+  },
+  "nav": {
+    "services": "Послуги",
+    "about": "Про нас",
+    "advantages": "Переваги",
+    "contacts": "Контакти",
+    "book": "Записатися"
+  },
+  "services": {
+    "diagnostics": {
+      "title": "Діагностика"
+    },
+    "maintenance": {
+      "title": "Обслуговування"
+    },
+    "repair": {
+      "title": "Ремонт"
+    },
+    "software": {
+      "title": "Оновлення ПЗ"
+    },
+    "performance": {
+      "title": "Performance"
+    }
   },
   "placeholder": {
     "eyebrow": "Спеціалізований сервіс електромобілів",

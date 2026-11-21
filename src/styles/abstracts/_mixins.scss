@@ -1,0 +1,13 @@
+// Hides content visually but keeps it available to screen readers
+@mixin visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px; // stylelint-disable-line unit-disallowed-list -- standard visually-hidden pattern
+  height: 1px; // stylelint-disable-line unit-disallowed-list -- standard visually-hidden pattern
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}

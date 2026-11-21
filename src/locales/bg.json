@@ -7,7 +7,35 @@
   "a11y": {
     "skipToContent": "Към съдържанието",
     "logoAlt": "e-drive performance",
-    "languageSwitcher": "Избор на език"
+    "languageSwitcher": "Избор на език",
+    "mainNavigation": "Основна навигация",
+    "openMenu": "Отвори менюто",
+    "closeMenu": "Затвори менюто",
+    "call": "Обадете ни се"
+  },
+  "nav": {
+    "services": "Услуги",
+    "about": "За нас",
+    "advantages": "Предимства",
+    "contacts": "Контакти",
+    "book": "Запази час"
+  },
+  "services": {
+    "diagnostics": {
+      "title": "Диагностика"
+    },
+    "maintenance": {
+      "title": "Обслужване"
+    },
+    "repair": {
+      "title": "Ремонт"
+    },
+    "software": {
+      "title": "Обновления на софтуер"
+    },
+    "performance": {
+      "title": "Performance"
+    }
   },
   "placeholder": {
     "eyebrow": "Специализиран сервиз за електромобили",

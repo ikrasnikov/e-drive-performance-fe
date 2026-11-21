@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { basename, dirname, join, resolve } from 'node:path';
 
@@ -43,8 +43,9 @@ const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'));
 export const i18nPages = ({ root, base = '/', siteUrl = '' }) => {
   const templatesDir = resolve(root, 'templates');
   const localesDir = resolve(root, 'locales');
+  const dataDir = resolve(root, 'data');
 
-  const createRenderer = () => {
+  const createRenderer = (messages) => {
     const hbs = Handlebars.create();
 
     for (const file of readdirSync(join(templatesDir, 'partials'))) {
@@ -54,8 +55,24 @@ export const i18nPages = ({ root, base = '/', siteUrl = '' }) => {
       );
     }
 
+    // {{tr "services" id "title"}} -> t.services[id].title, for keys built from data (site.json ids)
+    hbs.registerHelper('tr', (...args) => {
+      const path = args.slice(0, -1).join('.');
+      const value = path.split('.').reduce((node, key) => node?.[key], messages);
+      if (typeof value !== 'string') {
+        throw new Error(`Missing translation "${path}"`);
+      }
+      return value;
+    });
+
     hbs.registerHelper('icon', (name, options) => {
-      const svg = readFileSync(join(ICONS_DIR, `${name}.svg`), 'utf8');
+      const file = join(ICONS_DIR, `${name}.svg`);
+      if (!existsSync(file)) {
+        throw new Error(
+          `Unknown Material Symbol "${name}", check the name on fonts.google.com/icons`,
+        );
+      }
+      const svg = readFileSync(file, 'utf8');
       const className = ['icon', options.hash.class].filter(Boolean).join(' ');
       return new hbs.SafeString(
         svg.replace(
@@ -87,9 +104,9 @@ export const i18nPages = ({ root, base = '/', siteUrl = '' }) => {
     },
 
     configureServer(server) {
-      server.watcher.add([templatesDir, localesDir]);
+      server.watcher.add([templatesDir, localesDir, dataDir]);
       server.watcher.on('change', (file) => {
-        if (file.startsWith(templatesDir) || file.startsWith(localesDir)) {
+        if ([templatesDir, localesDir, dataDir].some((dir) => file.startsWith(dir))) {
           server.ws.send({ type: 'full-reload' });
         }
       });
@@ -99,7 +116,9 @@ export const i18nPages = ({ root, base = '/', siteUrl = '' }) => {
       order: 'pre',
       handler(_html, ctx) {
         const locale = localeFromPath(ctx.path);
-        const render = createRenderer();
+        const messages = readJson(join(localesDir, `${locale}.json`));
+        const site = readJson(join(dataDir, 'site.json'));
+        const render = createRenderer(messages);
 
         return render({
           alternates: LOCALES.map((id) => ({
@@ -107,14 +126,19 @@ export const i18nPages = ({ root, base = '/', siteUrl = '' }) => {
             href: `${siteUrl}${localeUrl(base, id)}`,
             label: id,
             lang: languageCode(id),
+            name: site.languages[id],
             path: localeUrl(base, id),
           })),
           base,
           canonical: `${siteUrl}${localeUrl(base, locale)}`,
           defaultHref: `${siteUrl}${localeUrl(base, DEFAULT_LOCALE)}`,
           homeHref: localeUrl(base, locale),
+          currentLanguage: { label: locale, name: site.languages[locale] },
+          // Latin is preloaded on every page (brand name), Cyrillic only where the texts need it
+          hasCyrillic: locale !== 'en',
           lang: languageCode(locale),
-          t: readJson(join(localesDir, `${locale}.json`)),
+          site,
+          t: messages,
         });
       },
     },

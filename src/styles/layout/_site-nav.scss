@@ -1,0 +1,126 @@
+@use '../abstracts' as *;
+
+// Mobile/tablet: full-screen panel under the header, opened by the burger.
+// Desktop (p5+): inline navigation.
+.site-nav {
+  position: fixed;
+  inset: var(--header-height) 0 0;
+
+  overflow-y: auto;
+  display: none;
+  flex-direction: column;
+  gap: var(--space-8);
+
+  padding: var(--space-4) var(--container-gutter) var(--space-8);
+
+  background-color: var(--color-bg);
+
+  @include breakpoint(p5) {
+    position: static;
+
+    overflow: visible;
+    display: block;
+    flex-grow: 1;
+
+    padding: 0;
+  }
+}
+
+.site-nav--open {
+  display: flex;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+
+  @include breakpoint(p5) {
+    flex-direction: row;
+    gap: var(--space-1);
+    justify-content: center;
+  }
+}
+
+.site-nav__item {
+  border-bottom: 1px solid var(--color-border);
+
+  @include breakpoint(p5) {
+    border-bottom: 0;
+  }
+}
+
+.site-nav__link {
+  display: flex;
+  gap: var(--space-1);
+  align-items: center;
+
+  width: 100%;
+  padding: var(--space-4) 0;
+  border: 0;
+  border-radius: var(--radius-s);
+
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  text-decoration: none;
+  white-space: nowrap;
+
+  background-color: transparent;
+
+  transition: background-color var(--transition-fast);
+
+  @include breakpoint(p5) {
+    width: auto;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-s);
+
+    &:hover {
+      background-color: var(--color-bg-muted);
+    }
+  }
+}
+
+// Phone and languages move to the header from p2
+.site-nav__mobile-extras {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+
+  @include breakpoint(p2) {
+    display: none;
+  }
+}
+
+.site-nav__phone {
+  display: inline-flex;
+  gap: var(--space-3);
+  align-items: center;
+
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+}
+
+.site-nav__languages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.site-nav__language {
+  display: inline-flex;
+
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+
+  &[aria-current='page'] {
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
+    background-color: var(--color-accent);
+  }
+}

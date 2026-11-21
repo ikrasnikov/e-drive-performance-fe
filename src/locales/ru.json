@@ -7,7 +7,35 @@
   "a11y": {
     "skipToContent": "Перейти к содержимому",
     "logoAlt": "e-drive performance",
-    "languageSwitcher": "Выбор языка"
+    "languageSwitcher": "Выбор языка",
+    "mainNavigation": "Основная навигация",
+    "openMenu": "Открыть меню",
+    "closeMenu": "Закрыть меню",
+    "call": "Позвонить нам"
+  },
+  "nav": {
+    "services": "Услуги",
+    "about": "О нас",
+    "advantages": "Преимущества",
+    "contacts": "Контакты",
+    "book": "Записаться"
+  },
+  "services": {
+    "diagnostics": {
+      "title": "Диагностика"
+    },
+    "maintenance": {
+      "title": "Обслуживание"
+    },
+    "repair": {
+      "title": "Ремонт"
+    },
+    "software": {
+      "title": "Обновление ПО"
+    },
+    "performance": {
+      "title": "Performance"
+    }
   },
   "placeholder": {
     "eyebrow": "Специализированный сервис электромобилей",

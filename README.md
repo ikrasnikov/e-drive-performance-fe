@@ -47,6 +47,9 @@ language into a separate static page. Texts are referenced as `{{t.section.key}}
 
 - Every key must exist in all four locale files, otherwise the build fails with the list of
   missing keys.
+- Non-translatable data (phone, language names and the list of services with their icons)
+  lives in `src/data/site.json` and is available in templates as `{{site.*}}`. Texts for items
+  from it are looked up by id: `{{tr "services" id "title"}}` → `t.services.<id>.title`.
 - `src/index.html`, `src/en/index.html`, ... are only entry stubs that define the page URLs: do
   not put markup there.
 - The Ukrainian page lives under `/ua/`, but its `lang` / `hreflang` is `uk` (the ISO language
@@ -58,9 +61,11 @@ language into a separate static page. Texts are referenced as `{{t.section.key}}
 build/              Vite plugin that renders the template per language
 public/             Files copied as is (favicons, web manifest)
 src/
+  assets/fonts/     Montserrat variable font (Latin + Cyrillic, self-hosted)
   assets/images/    Logos and images
   locales/          Translations, one JSON per language
-  scripts/main.js   JS entry: fonts + styles
+  data/site.json    Non-translatable data: phone, language names, services
+  scripts/          JS: header, dropdowns, burger menu
   styles/
     abstracts/      Breakpoints mixin (no CSS output)
     base/           Design tokens, reset, typography, icons, utilities
@@ -84,6 +89,13 @@ src/
   ```
 
 - Class names follow BEM with two dashes (`block__element--modifier`), enforced by Stylelint.
+
+## Fonts
+
+Montserrat is self-hosted as a variable font (`src/assets/fonts/`, from
+`@fontsource-variable/montserrat`, SIL OFL): one file per script covers all weights. The stylesheet
+is linked in `<head>` and the font files are preloaded, so pages render styled from the first
+paint. Latin is preloaded on every page, Cyrillic on the bg / ru / ua pages.
 
 ## Icons
 

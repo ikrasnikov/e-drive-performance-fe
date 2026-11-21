@@ -1,4 +1,7 @@
-// Temporary skeleton, the full header (navigation, phone, CTA, mobile menu) comes in stage 2
+@use '../abstracts' as *;
+
+// Desktop header (full navigation) starts at p5; below it the navigation lives in the burger menu.
+// Tablet (p2..p5): logo, phone, language switcher, CTA and burger.
 .site-header {
   position: sticky;
   z-index: 50;
@@ -7,37 +10,132 @@
   border-bottom: 1px solid var(--color-border);
 
   background-color: var(--color-bg);
+
+  transition: box-shadow var(--transition-base);
+}
+
+.site-header--scrolled {
+  box-shadow: var(--shadow-card);
 }
 
 .site-header__inner {
   display: flex;
   gap: var(--space-4);
   align-items: center;
-  justify-content: space-between;
-
   min-height: var(--header-height);
 }
 
-.site-header__logo img {
-  width: auto;
-  height: 2.75rem;
+.site-header__logo {
+  flex-shrink: 0;
+
+  img {
+    width: auto;
+    height: 2.25rem;
+
+    @include breakpoint(p2) {
+      height: 2.75rem;
+    }
+  }
 }
 
-.site-header__language-list {
+.site-header__actions {
   display: flex;
   gap: var(--space-2);
+  align-items: center;
+  margin-left: auto;
+
+  @include breakpoint(p3) {
+    gap: var(--space-3);
+  }
+
+  @include breakpoint(p5) {
+    gap: var(--space-4);
+    margin-left: 0;
+  }
 }
 
-.site-header__language-link {
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-s);
+.site-header__phone {
+  display: none;
+  gap: var(--space-2);
+  align-items: center;
 
   font-size: var(--font-size-s);
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
-  text-transform: uppercase;
+  white-space: nowrap;
 
-  &[aria-current='page'] {
-    background-color: var(--color-accent);
+  // Shown on tablets and wide desktops; between p5 and p6 the full navigation needs the room
+  @include breakpoint(p2) {
+    display: inline-flex;
+  }
+
+  @include breakpoint(p5) {
+    display: none;
+  }
+
+  @include breakpoint(p6) {
+    display: inline-flex;
+  }
+}
+
+.site-header__phone-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-accent);
+}
+
+.site-header__cta {
+  @include breakpoint(p1, max) {
+    padding-inline: var(--space-3);
+  }
+}
+
+.site-header__cta-text {
+  @include breakpoint(p1, max) {
+    @include visually-hidden;
+  }
+}
+
+.site-header__burger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-s);
+
+  color: var(--color-text);
+
+  background-color: transparent;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+  }
+
+  @include breakpoint(p5) {
+    display: none;
+  }
+}
+
+.site-header__burger-close {
+  display: none;
+}
+
+.site-header__burger[aria-expanded='true'] {
+  .site-header__burger-open {
+    display: none;
+  }
+
+  .site-header__burger-close {
+    display: block;
+  }
+}
+
+.page--menu-open {
+  @include breakpoint(p5, max) {
+    overflow: hidden;
   }
 }
