@@ -1,0 +1,23 @@
+// Small uppercase label with the accent bar, used above section titles
+.eyebrow {
+  display: flex;
+  gap: var(--space-3);
+  align-items: center;
+
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+  &::before {
+    content: '';
+
+    flex-shrink: 0;
+
+    width: 2.5rem;
+    height: 0.25rem;
+    border-radius: var(--radius-s);
+
+    background-color: var(--color-accent);
+  }
+}

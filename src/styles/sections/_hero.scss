@@ -1,0 +1,124 @@
+@use '../abstracts' as *;
+
+// Phone/tablet: text, then full-width media below, fading in from the top.
+// Desktop (p4+): text takes --hero-content-share of the container, media fills the rest up to the
+// right edge of the viewport and fades in from the left; a tapered accent stripe crosses the fade.
+.hero {
+  --hero-content-share: 5 / 12;
+  --hero-fade: 35%;
+  --hero-stripe-run: 16rem; // horizontal distance the stripe travels from top to bottom
+  --hero-stripe-top: 3rem; // stripe width at the top
+  --hero-stripe-bottom: 1.5rem; // stripe width at the bottom
+  --hero-stripe-overhang: 2.5rem; // how far the stripe reaches into the text column
+
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-muted) 100%);
+}
+
+.hero__layout {
+  display: grid;
+  gap: var(--space-8);
+  padding-top: var(--space-8);
+
+  @include breakpoint(p4) {
+    grid-template-columns:
+      [full-start] minmax(var(--container-gutter), 1fr)
+      [content-start] minmax(0, calc(var(--container-max-width) * var(--hero-content-share)))
+      [media-start] minmax(0, calc(var(--container-max-width) * (1 - var(--hero-content-share))))
+      [content-end] minmax(var(--container-gutter), 1fr)
+      [full-end];
+    gap: 0;
+    min-height: clamp(28rem, 40vw, 38rem);
+    padding-top: 0;
+  }
+}
+
+.hero__content {
+  container-type: inline-size;
+  padding-inline: var(--container-gutter);
+
+  @include breakpoint(p4) {
+    grid-column: content-start / media-start;
+    align-self: center;
+    padding: var(--space-section) var(--space-8) var(--space-section) 0;
+  }
+}
+
+.hero__title {
+  margin-top: var(--space-4);
+
+  // Sized by the column width: the longest word ("Производительность") must fit on one line
+  font-size: clamp(1.5rem, 8.2cqi, 2.75rem);
+  hyphens: auto;
+}
+
+.hero__text {
+  max-width: 32rem;
+  margin-top: var(--space-4);
+  font-size: var(--font-size-l);
+  color: var(--color-text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.hero__media {
+  position: relative;
+
+  @include breakpoint(p4) {
+    grid-column: media-start / full-end;
+  }
+
+  // Accent stripe: wide and opaque at the top, narrowing and fading out towards the bottom
+  &::before {
+    @include breakpoint(p4) {
+      content: '';
+
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      bottom: 0;
+      left: calc(-1 * var(--hero-stripe-overhang));
+
+      width: var(--hero-stripe-run);
+
+      background: linear-gradient(180deg, var(--color-accent) -20%, rgb(255, 193, 7, 0) 80%);
+      clip-path: polygon(
+        calc(var(--hero-stripe-run) - var(--hero-stripe-top)) 0,
+        var(--hero-stripe-run) 0,
+        var(--hero-stripe-bottom) 100%,
+        0 100%
+      );
+    }
+  }
+}
+
+// The mask fades the media itself into the section background, whatever the media is
+// (image, GIF, video), so there is no hard edge between the text and the picture
+.hero__media-frame {
+  aspect-ratio: 16 / 10;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 25%);
+
+  @include breakpoint(p2) {
+    aspect-ratio: 2 / 1;
+  }
+
+  @include breakpoint(p4) {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+    // Eased stops instead of a linear ramp, so the fade has no visible start or end line
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(0, 0, 0, 0.1) calc(var(--hero-fade) * 0.25),
+      rgb(0, 0, 0, 0.35) calc(var(--hero-fade) * 0.5),
+      rgb(0, 0, 0, 0.75) calc(var(--hero-fade) * 0.75),
+      #000 var(--hero-fade)
+    );
+  }
+}

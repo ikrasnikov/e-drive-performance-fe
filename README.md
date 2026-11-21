@@ -41,7 +41,8 @@ The dev server runs at http://localhost:5173. `npm install` also sets up the git
 | Russian   | `/ru/` | `src/locales/ru.json` |
 | Ukrainian | `/ua/` | `src/locales/ua.json` |
 
-The page markup lives in a single template, `src/templates/index.html` (+ `partials/`), written in
+The page markup lives in a single template, `src/templates/index.html` (+ `partials/`, sections in
+`partials/sections/`, included as `{{> sections/hero}}`), written in
 [Handlebars](https://handlebarsjs.com). At build time `build/i18n-pages.js` renders it once per
 language into a separate static page. Texts are referenced as `{{t.section.key}}`.
 

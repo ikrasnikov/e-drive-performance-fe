@@ -5,10 +5,12 @@
 @use 'base/icons';
 @use 'base/utilities';
 @use 'components/button';
+@use 'components/eyebrow';
 @use 'components/language-switcher';
+@use 'components/media-placeholder';
 @use 'layout/container';
 @use 'layout/page';
 @use 'layout/site-header';
 @use 'layout/site-nav';
 @use 'layout/site-footer';
-@use 'sections/placeholder-section';
+@use 'sections/hero';

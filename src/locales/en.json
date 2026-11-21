@@ -37,10 +37,11 @@
       "title": "Performance"
     }
   },
-  "placeholder": {
+  "hero": {
     "eyebrow": "Specialised electric vehicle service",
-    "title": "Coming soon: e‑drive performance",
-    "text": "This page is under construction."
+    "title": "Tesla expertise. Maximum performance for your EV.",
+    "text": "Diagnostics, maintenance, repair and upgrades for Tesla and other electric vehicles.",
+    "servicesCta": "Our services"
   },
   "footer": {
     "rights": "© e-drive performance. All rights reserved."

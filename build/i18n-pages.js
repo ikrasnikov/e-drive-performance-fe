@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { basename, dirname, join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 
 import Handlebars from 'handlebars';
 
@@ -48,11 +48,15 @@ export const i18nPages = ({ root, base = '/', siteUrl = '' }) => {
   const createRenderer = (messages) => {
     const hbs = Handlebars.create();
 
-    for (const file of readdirSync(join(templatesDir, 'partials'))) {
-      hbs.registerPartial(
-        basename(file, '.html'),
-        readFileSync(join(templatesDir, 'partials', file), 'utf8'),
-      );
+    // Partials are named by their path inside partials/: {{> header}}, {{> sections/hero}}
+    const partialsDir = join(templatesDir, 'partials');
+    for (const file of readdirSync(partialsDir, { recursive: true })) {
+      if (file.endsWith('.html')) {
+        hbs.registerPartial(
+          file.replace(/\.html$/, ''),
+          readFileSync(join(partialsDir, file), 'utf8'),
+        );
+      }
     }
 
     // {{tr "services" id "title"}} -> t.services[id].title, for keys built from data (site.json ids)

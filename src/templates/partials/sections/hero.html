@@ -1,0 +1,26 @@
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero__layout">
+    <div class="hero__content">
+      <p class="eyebrow">{{t.hero.eyebrow}}</p>
+      <h1 id="hero-title" class="hero__title">{{t.hero.title}}</h1>
+      <p class="hero__text">{{t.hero.text}}</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href="#booking">
+          {{icon "calendar_month"}} {{t.nav.book}}
+        </a>
+        <a class="button button--outline" href="#services">
+          {{icon "arrow_downward"}} {{t.hero.servicesCta}}
+        </a>
+      </div>
+    </div>
+
+    <div class="hero__media">
+      <!-- Placeholder: will be replaced by a GIF / video / interactive image -->
+      <div class="hero__media-frame">
+        <div class="media-placeholder" aria-hidden="true">
+          {{icon "electric_car" class="media-placeholder__icon"}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

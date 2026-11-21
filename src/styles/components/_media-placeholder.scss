@@ -1,0 +1,20 @@
+// Temporary stand-in for images / GIFs / videos until the real media is provided
+.media-placeholder {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  color: var(--color-accent);
+
+  background:
+    radial-gradient(circle at 65% 40%, rgb(255, 193, 7, 0.18), transparent 55%),
+    linear-gradient(135deg, var(--color-slate), var(--color-graphite));
+}
+
+.media-placeholder__icon {
+  width: clamp(4rem, 10vw, 8rem);
+  height: clamp(4rem, 10vw, 8rem);
+  opacity: 0.85;
+}
