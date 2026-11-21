@@ -1,0 +1,32 @@
+.visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px; // stylelint-disable-line unit-disallowed-list -- standard visually-hidden pattern
+  height: 1px; // stylelint-disable-line unit-disallowed-list -- standard visually-hidden pattern
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}
+
+.skip-link {
+  position: absolute;
+  z-index: 100;
+  top: var(--space-2);
+  left: var(--space-2);
+  transform: translateY(-200%);
+
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-s);
+
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-on-accent);
+
+  background-color: var(--color-accent);
+
+  &:focus {
+    transform: none;
+  }
+}

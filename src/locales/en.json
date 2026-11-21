@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "title": "e-drive performance — EV service",
+    "description": "Diagnostics, maintenance, repair and upgrades for Tesla and other electric vehicles.",
+    "ogLocale": "en_US"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "logoAlt": "e-drive performance",
+    "languageSwitcher": "Choose language"
+  },
+  "placeholder": {
+    "eyebrow": "Specialised electric vehicle service",
+    "title": "Coming soon: e‑drive performance",
+    "text": "This page is under construction."
+  },
+  "footer": {
+    "rights": "© e-drive performance. All rights reserved."
+  }
+}

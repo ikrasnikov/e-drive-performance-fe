@@ -1,0 +1,35 @@
+@use 'sass:map';
+
+// p0: 320, p1: 480, p2: 640, p3: 800, p4: 960, p5: 1120, p6: 1280, p7: 1440
+// Rough mapping: phone < p2, tablet p2..p4, desktop >= p4
+/* stylelint-disable unit-disallowed-list -- media query widths are in px, same as mono */
+$breakpoint-widths: (
+  'p0': 320px,
+  'p1': 480px,
+  'p2': 640px,
+  'p3': 800px,
+  'p4': 960px,
+  'p5': 1120px,
+  'p6': 1280px,
+  'p7': 1440px,
+);
+/* stylelint-enable unit-disallowed-list */
+
+// Usage: @include breakpoint(p3) { ... } -> >= 800px; @include breakpoint(p3, max) { ... } -> < 800px
+@mixin breakpoint($name, $type: min) {
+  $size: map.get($breakpoint-widths, $name);
+
+  @if not $size {
+    @error 'Unknown breakpoint "#{$name}", use one of: #{map.keys($breakpoint-widths)}';
+  }
+
+  @if $type == max {
+    // subtract .02px for higher precision - https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+    $size: $size - 0.02;
+  }
+
+  /* stylelint-disable-next-line media-query-no-invalid -- dynamic interpolation */
+  @media only screen and (#{$type}-width: #{$size}) {
+    @content;
+  }
+}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{lang}}">
+  {{> head}}
+  <body class="page">
+    <a class="skip-link" href="#main">{{t.a11y.skipToContent}}</a>
+
+    {{> header}}
+
+    <main id="main" class="page__main">
+      <section class="placeholder-section">
+        <div class="container">
+          <p class="placeholder-section__eyebrow">{{t.placeholder.eyebrow}}</p>
+          <h1 class="placeholder-section__title">{{t.placeholder.title}}</h1>
+          <p class="placeholder-section__text">{{t.placeholder.text}}</p>
+          <ul class="placeholder-section__icons" aria-hidden="true">
+            <li>{{icon "electric_car"}}</li>
+            <li>{{icon "battery_charging_full"}}</li>
+            <li>{{icon "monitor_heart"}}</li>
+            <li>{{icon "build"}}</li>
+            <li>{{icon "memory"}}</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    {{> footer}}
+
+    <script type="module" src="/scripts/main.js"></script>
+  </body>
+</html>

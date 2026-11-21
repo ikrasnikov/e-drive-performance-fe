@@ -6,6 +6,8 @@ export default {
   ],
   rules: {
     'alpha-value-notation': ['number'],
+    // CSS-only validation rules do not understand SCSS syntax (@mixin, @include with interpolation)
+    'at-rule-prelude-no-invalid': null,
     'annotation-no-unknown': [
       true,
       {

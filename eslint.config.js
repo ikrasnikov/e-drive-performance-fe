@@ -123,13 +123,12 @@ export default [
       'no-unsanitized/property': 'warn',
       'security/detect-eval-with-expression': 'error',
 
-      // Group order follows mono's import-sort-style-studytube:
-      // packages, side-effect imports, env/config/routes, local imports
       'simple-import-sort/exports': 'error',
       'simple-import-sort/imports': [
         'error',
         {
           groups: [
+            ['^node:'],
             ['^@?\\w'],
             ['^\\u0000'],
             ['(@env|/env|/environment|/config|-routes|/routes)(\\.js)?$'],
@@ -140,7 +139,7 @@ export default [
     },
   },
   {
-    files: ['*.config.{js,mjs,cjs}'],
+    files: ['*.config.{js,mjs,cjs}', 'build/**/*.js'],
     languageOptions: {
       globals: globals.node,
     },

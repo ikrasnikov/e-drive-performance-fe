@@ -1,0 +1,33 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__logo" href="{{homeHref}}">
+      <img
+        src="/assets/images/logo/logo-car.svg"
+        alt="{{t.a11y.logoAlt}}"
+        width="180"
+        height="69"
+      />
+    </a>
+
+    <nav
+      class="site-header__languages"
+      aria-label="{{t.a11y.languageSwitcher}}"
+    >
+      <ul class="site-header__language-list">
+        {{#each alternates}}
+        <li>
+          <a
+            class="site-header__language-link"
+            href="{{path}}"
+            hreflang="{{lang}}"
+            lang="{{lang}}"
+            aria-current="{{ariaCurrent}}"
+          >
+            {{label}}
+          </a>
+        </li>
+        {{/each}}
+      </ul>
+    </nav>
+  </div>
+</header>

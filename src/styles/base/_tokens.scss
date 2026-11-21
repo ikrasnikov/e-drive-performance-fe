@@ -1,0 +1,66 @@
+:root {
+  // Brand palette
+  --color-white: #fff;
+  --color-graphite: #0f1216;
+  --color-accent: #ffc107;
+  --color-light-gray: #e6e8eb;
+  --color-slate: #2c3440;
+
+  // Semantic colors
+  // Accent is decorative on light backgrounds (contrast 1.6:1): never use it for text on white
+  --color-bg: var(--color-white);
+  --color-bg-muted: #f5f6f7;
+  --color-bg-inverse: var(--color-graphite);
+  --color-surface-inverse: var(--color-slate);
+  --color-text: var(--color-graphite);
+  --color-text-muted: var(--color-slate);
+  --color-text-inverse: var(--color-white);
+  --color-text-accent-inverse: var(--color-accent);
+  --color-on-accent: var(--color-graphite);
+  --color-border: var(--color-light-gray);
+  --color-focus: var(--color-accent);
+
+  // Typography
+  --font-family-base: 'Montserrat', system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --font-weight-extrabold: 800;
+  --line-height-tight: 1.15;
+  --line-height-base: 1.5;
+
+  // Fluid font sizes: phone -> desktop
+  --font-size-xs: 0.75rem;
+  --font-size-s: 0.875rem;
+  --font-size-m: 1rem;
+  --font-size-l: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+  --font-size-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --font-size-h2: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  --font-size-h1: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+
+  // Spacing scale (4px steps)
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-section: clamp(3rem, 2rem + 4vw, 6rem);
+
+  // Shape & depth
+  --radius-s: 0.375rem;
+  --radius-m: 0.75rem;
+  --radius-l: 1rem;
+  --shadow-card: 0 0.25rem 1.5rem rgb(15, 18, 22, 0.08);
+  --shadow-raised: 0 0.5rem 2rem rgb(15, 18, 22, 0.16);
+
+  // Layout
+  --container-max-width: 80rem;
+  --container-gutter: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  --header-height: 4.5rem;
+
+  // Motion
+  --transition-fast: 150ms ease-out;
+  --transition-base: 250ms ease-out;
+}

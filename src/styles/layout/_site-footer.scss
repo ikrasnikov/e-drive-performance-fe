@@ -1,0 +1,16 @@
+// Temporary skeleton, the full footer comes in stage 2
+.site-footer {
+  padding-block: var(--space-8);
+  color: var(--color-text-inverse);
+  background-color: var(--color-bg-inverse);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: space-between;
+
+  font-size: var(--font-size-s);
+}

@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "title": "e-drive performance — сервіс електромобілів",
+    "description": "Діагностика, обслуговування, ремонт і апгрейди для Tesla та інших електромобілів.",
+    "ogLocale": "uk_UA"
+  },
+  "a11y": {
+    "skipToContent": "Перейти до вмісту",
+    "logoAlt": "e-drive performance",
+    "languageSwitcher": "Вибір мови"
+  },
+  "placeholder": {
+    "eyebrow": "Спеціалізований сервіс електромобілів",
+    "title": "Незабаром тут: e‑drive performance",
+    "text": "Сторінка в розробці."
+  },
+  "footer": {
+    "rights": "© e-drive performance. Усі права захищені."
+  }
+}
