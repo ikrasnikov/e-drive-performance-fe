@@ -1,0 +1,65 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+**/dist
+/tmp
+/out-tsc
+/schematics/**/dist
+
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.devin
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.angulardoc.json
+.aider*
+
+# IDE - VSCode
+.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+
+# misc
+/.angular/cache
+/.sass-cache
+/connect.lock
+/coverage
+/projects/coverage
+/unit-tests-report
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+yarn-error.log
+/.nx
+.env
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+.angular
+appspec.yml
+/.cursor
+/.claude
+.github/instructions/nx.instructions.md
+
+report.xml
+junit.xml
