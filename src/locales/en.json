@@ -20,28 +20,36 @@
     "contacts": "Contacts",
     "book": "Book a visit"
   },
-  "services": {
-    "diagnostics": {
-      "title": "Diagnostics"
-    },
-    "maintenance": {
-      "title": "Maintenance"
-    },
-    "repair": {
-      "title": "Repair"
-    },
-    "software": {
-      "title": "Software updates"
-    },
-    "performance": {
-      "title": "Performance"
-    }
-  },
   "hero": {
     "eyebrow": "Specialised electric vehicle service",
     "title": "Tesla expertise. Maximum performance for your EV.",
     "text": "Diagnostics, maintenance, repair and upgrades for Tesla and other electric vehicles.",
     "servicesCta": "Our services"
+  },
+  "services": {
+    "eyebrow": "Our services",
+    "title": "Complete care for your electric vehicle",
+    "lead": "From routine maintenance to complex repairs and performance upgrades.",
+    "diagnostics": {
+      "title": "Diagnostics",
+      "text": "Full inspection and analysis of all systems"
+    },
+    "maintenance": {
+      "title": "Maintenance",
+      "text": "Scheduled service, prevention and consumables"
+    },
+    "repair": {
+      "title": "Repair",
+      "text": "Troubleshooting and restoration"
+    },
+    "software": {
+      "title": "Software updates",
+      "text": "Updates and activation of features and options"
+    },
+    "performance": {
+      "title": "Performance",
+      "text": "Optimisation, tuning and better dynamics"
+    }
   },
   "footer": {
     "rights": "© e-drive performance. All rights reserved."

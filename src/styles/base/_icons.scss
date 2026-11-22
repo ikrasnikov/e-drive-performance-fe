@@ -1,6 +1,12 @@
-// Material Symbols (outlined, weight 400) are inlined as SVG by the {{icon "name"}} template helper
+// Inlined as SVG by the template helper: {{icon "name"}} = Material Symbols (outlined, 400),
+// {{icon "brand:folder/name"}} = custom two-color icons from src/assets/icons
 .icon {
   flex-shrink: 0;
   width: 1.5em;
   height: 1.5em;
+}
+
+// Accent parts of brand icons (drawn in #FFC107), recolorable per component
+.icon__accent {
+  fill: var(--icon-accent-color, var(--color-accent));
 }

@@ -1,0 +1,38 @@
+@use '../abstracts' as *;
+
+// Eyebrow on top; title on the left with a short lead text on the right
+// (stacked on phones/tablets)
+.section-header {
+  display: grid;
+  gap: var(--space-4);
+
+  @include breakpoint(p4) {
+    grid-template-areas:
+      'eyebrow eyebrow'
+      'title lead';
+    grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+    column-gap: var(--space-12);
+  }
+}
+
+.section-header__eyebrow {
+  @include breakpoint(p4) {
+    grid-area: eyebrow;
+  }
+}
+
+.section-header__title {
+  @include breakpoint(p4) {
+    grid-area: title;
+  }
+}
+
+.section-header__lead {
+  max-width: 32rem;
+  font-size: var(--font-size-m);
+  color: var(--color-text-muted);
+
+  @include breakpoint(p4) {
+    grid-area: lead;
+  }
+}

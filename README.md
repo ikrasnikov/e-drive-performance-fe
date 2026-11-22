@@ -100,14 +100,16 @@ paint. Latin is preloaded on every page, Cyrillic on the bg / ru / ua pages.
 
 ## Icons
 
-[Material Symbols](https://fonts.google.com/icons) (Outlined, weight 400), inlined as SVG:
+Two icon sources, both inlined as SVG by the `{{icon}}` helper:
 
-```handlebars
-{{icon "bolt"}}
-{{icon "electric_car" class="service-card__icon"}}
-```
+- [Material Symbols](https://fonts.google.com/icons) (Outlined, weight 400) — UI icons (header,
+  buttons): `{{icon "calendar_month"}}`
+- Brand icons — custom two-color illustrative icons from `src/assets/icons/` (service cards):
+  `{{icon "brand:services/repair"}}`. Graphite `#0F1216` becomes `currentColor`, accent `#FFC107`
+  gets the `icon__accent` class (recolor with `--icon-accent-color`). The current service icons are
+  placeholders, see `src/assets/icons/README.md` for the file requirements.
 
-The name is the icon name from fonts.google.com/icons; the icon takes the current text color.
+Extra classes: `{{icon "bolt" class="my-block__icon"}}`. An unknown icon name fails the build.
 
 ## Code style and git hooks
 

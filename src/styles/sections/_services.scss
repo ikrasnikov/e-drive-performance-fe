@@ -1,0 +1,88 @@
+@use '../abstracts' as *;
+
+// Cards are informational only (no links / hover actions).
+// Phone: one column, icon left of the text. p2: 2 per row, p4: 3 per row, p5: all 5 in one row;
+// incomplete rows are centered.
+.services__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  justify-content: center;
+
+  margin-top: var(--space-8);
+
+  @include breakpoint(p4) {
+    margin-top: var(--space-12);
+  }
+}
+
+.service-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  flex: 1 1 100%;
+  column-gap: var(--space-4);
+  align-items: start;
+
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-l);
+
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-card);
+
+  @include breakpoint(p2) {
+    display: flex;
+    flex: 0 1 calc((100% - var(--space-4)) / 2);
+    flex-direction: column;
+    align-items: center;
+
+    padding: var(--space-6) var(--space-4);
+
+    text-align: center;
+  }
+
+  @include breakpoint(p4) {
+    flex-basis: calc((100% - 2 * var(--space-4)) / 3);
+  }
+
+  @include breakpoint(p5) {
+    flex-basis: calc((100% - 4 * var(--space-4)) / 5);
+  }
+}
+
+.service-card__title {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-extrabold);
+  hyphens: auto;
+
+  @include breakpoint(p2) {
+    margin-top: var(--space-4);
+  }
+}
+
+.service-card__text {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-s);
+  color: var(--color-text-muted);
+
+  @include breakpoint(p2) {
+    margin-top: var(--space-2);
+  }
+}
+
+// Brand icon (graphite + accent)
+.service-card__icon {
+  display: inline-flex;
+  grid-row: span 2; // phone layout: icon to the left of title + text
+  color: var(--color-graphite);
+
+  .icon {
+    width: 2.75rem;
+    height: 2.75rem;
+
+    @include breakpoint(p2) {
+      width: 3.25rem;
+      height: 3.25rem;
+    }
+  }
+}

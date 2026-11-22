@@ -12,23 +12,23 @@
   "services": [
     {
       "id": "diagnostics",
-      "icon": "monitor_heart"
+      "icon": "brand:services/diagnostics"
     },
     {
       "id": "maintenance",
-      "icon": "build"
+      "icon": "brand:services/maintenance"
     },
     {
       "id": "repair",
-      "icon": "car_repair"
+      "icon": "brand:services/repair"
     },
     {
       "id": "software",
-      "icon": "memory"
+      "icon": "brand:services/software"
     },
     {
       "id": "performance",
-      "icon": "speed"
+      "icon": "brand:services/performance"
     }
   ]
 }

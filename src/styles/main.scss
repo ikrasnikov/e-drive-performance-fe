@@ -8,9 +8,12 @@
 @use 'components/eyebrow';
 @use 'components/language-switcher';
 @use 'components/media-placeholder';
+@use 'components/section-header';
 @use 'layout/container';
 @use 'layout/page';
+@use 'layout/section';
 @use 'layout/site-header';
 @use 'layout/site-nav';
 @use 'layout/site-footer';
 @use 'sections/hero';
+@use 'sections/services';
