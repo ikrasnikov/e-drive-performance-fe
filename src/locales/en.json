@@ -123,6 +123,14 @@
     "closed": "Closed"
   },
   "footer": {
-    "rights": "© e-drive performance. All rights reserved."
+    "tagline": "Specialised electric vehicle service.",
+    "navigationTitle": "Navigation",
+    "contactsTitle": "Contacts",
+    "social": "Social media",
+    "rights": "All rights reserved.",
+    "legal": "Legal information",
+    "terms": "Terms and conditions",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie policy"
   }
 }

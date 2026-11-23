@@ -1,16 +1,220 @@
-// Temporary skeleton, the full footer comes in stage 2
+@use '../abstracts' as *;
+
+// Dark footer with an accent line on top: brand (logo, tagline, social links), navigation and
+// contacts columns split by dividers, the car sketch, then the copyright and legal links.
+// Phone: everything stacked; p2: brand on its own row, navigation and contacts side by side;
+// p4: three columns.
 .site-footer {
-  padding-block: var(--space-8);
+  overflow: hidden;
+
+  border-top: 3px solid var(--color-accent); // stylelint-disable-line unit-disallowed-list -- thin accent line
+
+  font-size: var(--font-size-m);
   color: var(--color-text-inverse);
+
   background-color: var(--color-bg-inverse);
 }
 
-.site-footer__inner {
+.site-footer__main {
+  display: grid;
+  gap: var(--space-8);
+  padding-block: var(--space-12) var(--space-6);
+
+  @include breakpoint(p2) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include breakpoint(p4) {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 0;
+  }
+}
+
+.site-footer__brand {
+  @include breakpoint(p2) {
+    grid-column: 1 / -1;
+  }
+
+  @include breakpoint(p4) {
+    grid-column: auto;
+    padding-right: var(--space-8);
+  }
+}
+
+.site-footer__logo img {
+  width: 13.75rem;
+  height: auto;
+}
+
+.site-footer__tagline {
+  max-width: 18rem;
+  margin-top: var(--space-4);
+  font-size: var(--font-size-m);
+  color: var(--color-text-inverse-muted);
+}
+
+.site-footer__social {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4);
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.site-footer__social-link {
+  display: grid;
+  place-items: center;
+
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-s);
+
+  color: var(--color-accent);
+
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-on-accent);
+    background-color: var(--color-accent);
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.site-footer__column {
+  position: relative;
+
+  @include breakpoint(p4) {
+    padding-inline: var(--space-8);
+
+    &::before {
+      @include vertical-divider(var(--color-border-inverse));
+    }
+  }
+}
+
+.site-footer__title {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-extrabold);
+
+  &::before {
+    @include accent-bar-above;
+
+    margin-bottom: var(--space-3);
+  }
+}
+
+.site-footer__links {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+
+  a {
+    color: var(--color-text-inverse-muted);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-text-inverse);
+      text-decoration: underline;
+      text-decoration-color: var(--color-accent);
+    }
+  }
+}
+
+.site-footer__contacts {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+
+  li {
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+    overflow-wrap: anywhere;
+  }
+
+  a {
+    color: var(--color-text-inverse);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--color-accent);
+    }
+  }
+
+  .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-accent);
+  }
+}
+
+.site-footer__car {
+  display: block;
+  width: min(100%, 54rem);
+  margin-left: auto;
+
+  // From p4 the columns leave free space under the brand: the sketch rises into it
+  @include breakpoint(p4) {
+    margin-top: calc(-1 * var(--space-12));
+  }
+}
+
+.site-footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-6);
   align-items: center;
   justify-content: space-between;
 
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--color-border-inverse);
+
   font-size: var(--font-size-s);
+  color: var(--color-text-inverse-muted);
+}
+
+// Legal links: a column on phones; from p2 one row split by short accent separators, as in the design
+.site-footer__legal {
+  display: grid;
+  gap: var(--space-2);
+
+  @include breakpoint(p2) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2) 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+  }
+
+  li + li::before {
+    @include breakpoint(p2) {
+      content: '';
+
+      width: 2px; // stylelint-disable-line unit-disallowed-list -- thin separator
+      height: 1em;
+      margin-inline: var(--space-4);
+
+      background-color: var(--color-accent);
+    }
+  }
+
+  a {
+    color: var(--color-text-inverse-muted);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-text-inverse);
+      text-decoration: underline;
+    }
+  }
 }

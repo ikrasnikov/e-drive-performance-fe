@@ -85,5 +85,31 @@
         "time": ""
       }
     ]
-  }
+  },
+  "social": [
+    {
+      "id": "youtube",
+      "name": "YouTube",
+      "icon": "tb:brand-youtube",
+      "url": ""
+    },
+    {
+      "id": "instagram",
+      "name": "Instagram",
+      "icon": "tb:brand-instagram",
+      "url": ""
+    },
+    {
+      "id": "facebook",
+      "name": "Facebook",
+      "icon": "tb:brand-facebook",
+      "url": ""
+    },
+    {
+      "id": "linkedin",
+      "name": "LinkedIn",
+      "icon": "tb:brand-linkedin",
+      "url": ""
+    }
+  ]
 }

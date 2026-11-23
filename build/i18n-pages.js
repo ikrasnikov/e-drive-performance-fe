@@ -36,6 +36,12 @@ const clearWhiteFills = (svg) =>
 // {{icon "bolt"}} -> Material Symbols (outlined), UI icons
 // {{icon "brand:services/repair"}} -> src/assets/icons/services/repair.svg, custom illustrative icons
 const ICON_SETS = {
+  // {{icon "tb:brand-instagram"}} -> Tabler Icons (outline), brand logos (social networks)
+  tb: {
+    file: (name) => join(packageDir('@tabler/icons'), 'icons', 'outline', `${name}.svg`),
+    hint: 'check the name on tabler.io/icons',
+    className: 'icon--stroke',
+  },
   material: {
     file: (name) => join(packageDir('@material-symbols/svg-400'), 'outlined', `${name}.svg`),
     hint: 'check the name on fonts.google.com/icons',
@@ -127,7 +133,13 @@ export const i18nPages = ({ root, base = '/', siteUrl = '' }) => {
           const viewBox = attrs.match(/viewBox="([^"]+)"/)?.[1];
           // Keep the root fill of the source (fill="none" for outlined icons), default to currentColor
           const fill = attrs.match(/\sfill="([^"]+)"/)?.[1] ?? 'currentColor';
-          return `<svg class="${className}" viewBox="${viewBox}" fill="${fill}" aria-hidden="true" focusable="false">`;
+          // Stroke-drawn icons (Tabler) set their stroke on the root: carry these attributes over
+          const strokeAttrs = [
+            ...attrs.matchAll(/\s(stroke(?:-width|-linecap|-linejoin)?)="([^"]+)"/g),
+          ]
+            .map(([, attr, value]) => ` ${attr}="${value}"`)
+            .join('');
+          return `<svg class="${className}" viewBox="${viewBox}" fill="${fill}"${strokeAttrs} aria-hidden="true" focusable="false">`;
         }),
       );
     });
@@ -188,7 +200,10 @@ export const i18nPages = ({ root, base = '/', siteUrl = '' }) => {
           hasCyrillic: locale !== 'en',
           lang: languageCode(locale),
           site,
+          // Social networks are shown only once their link is filled in site.json
+          socialLinks: site.social.filter(({ url }) => url),
           t: messages,
+          year: new Date().getFullYear(),
         });
       },
     },
