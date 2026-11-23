@@ -6,10 +6,6 @@
 .hero {
   --hero-content-share: var(--split-content-share);
   --hero-fade: 35%;
-  --hero-stripe-run: 16rem; // horizontal distance the stripe travels from top to bottom
-  --hero-stripe-top: 3rem; // stripe width at the top
-  --hero-stripe-bottom: 1.5rem; // stripe width at the bottom
-  --hero-stripe-overhang: 2.5rem; // how far the stripe reaches into the text column
 
   overflow: hidden;
   background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-muted) 100%);
@@ -72,13 +68,9 @@
   // Accent stripe: wide and opaque at the top, narrowing and fading out towards the bottom
   &::before {
     @include breakpoint(p4) {
-      @include tapered-stripe(
-        var(--hero-stripe-run),
-        var(--hero-stripe-top),
-        var(--hero-stripe-bottom)
-      );
+      @include tapered-stripe(var(--stripe-run), var(--stripe-top), var(--stripe-bottom));
 
-      left: calc(-1 * var(--hero-stripe-overhang));
+      left: calc(-1 * var(--stripe-overhang));
     }
   }
 }

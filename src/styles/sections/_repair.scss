@@ -6,10 +6,6 @@
 .repair {
   --repair-content-share: var(--split-content-share);
   --repair-fade: 35%;
-  --repair-stripe-run: 12rem;
-  --repair-stripe-top: 2.5rem;
-  --repair-stripe-bottom: 1rem;
-  --repair-stripe-overhang: 2rem;
 
   overflow: hidden;
   background: linear-gradient(180deg, var(--color-bg-muted) 0%, var(--color-bg) 100%);
@@ -88,13 +84,9 @@
 
   &::before {
     @include breakpoint(p4) {
-      @include tapered-stripe(
-        var(--repair-stripe-run),
-        var(--repair-stripe-top),
-        var(--repair-stripe-bottom)
-      );
+      @include tapered-stripe(var(--stripe-run), var(--stripe-top), var(--stripe-bottom));
 
-      left: calc(-1 * var(--repair-stripe-overhang));
+      left: calc(-1 * var(--stripe-overhang));
     }
   }
 }

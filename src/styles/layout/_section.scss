@@ -2,3 +2,10 @@
 .section {
   padding-block: var(--space-section);
 }
+
+// Lets section content size against the content width (cqi units, e.g. --split-content-width).
+// Not on .container in general: size containment would make the header container the containing
+// block of the fixed mobile menu.
+.section > .container {
+  container-type: inline-size;
+}

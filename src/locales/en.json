@@ -105,6 +105,23 @@
     },
     "success": "Thank you! We will contact you soon."
   },
+  "contacts": {
+    "title": "Contacts",
+    "subtitle": "Contact us for service, diagnostics or a personal consultation for your car.",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "addressValue": "Sofia, 215 Tsarigradsko Shose Blvd.",
+    "mapLink": "View on map",
+    "newTab": "(opens in a new tab)",
+    "hoursTitle": "Opening hours",
+    "days": {
+      "weekdays": "Monday – Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    },
+    "closed": "Closed"
+  },
   "footer": {
     "rights": "© e-drive performance. All rights reserved."
   }

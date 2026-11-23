@@ -25,3 +25,18 @@
 
   background-color: var(--color-accent);
 }
+
+// Thin vertical divider on the left edge of a positioned element, shorter than the element
+// (inset top and bottom); use in ::before
+@mixin vertical-divider {
+  content: '';
+
+  position: absolute;
+  top: 15%;
+  bottom: 15%;
+  left: 0;
+
+  width: 3px; // stylelint-disable-line unit-disallowed-list -- thin divider
+
+  background-color: var(--color-border);
+}

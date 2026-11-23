@@ -1,0 +1,84 @@
+<section id="contacts" class="contacts" aria-labelledby="contacts-title">
+  <div class="contacts__layout">
+    <div class="contacts__content">
+      <h2 id="contacts-title" class="contacts__title">{{t.contacts.title}}</h2>
+      <p class="contacts__subtitle">{{t.contacts.subtitle}}</p>
+
+      <div class="contacts__details">
+        <ul class="contacts__list">
+          <li class="contact-item">
+            {{icon "call" class="contact-item__icon"}}
+            <div>
+              <p class="contact-item__label">{{t.contacts.phone}}</p>
+              <a class="contact-item__value" href="{{site.phone.href}}">
+                {{site.phone.display}}
+              </a>
+            </div>
+          </li>
+          <li class="contact-item">
+            {{icon "mail" class="contact-item__icon"}}
+            <div>
+              <p class="contact-item__label">{{t.contacts.email}}</p>
+              <a
+                class="contact-item__value"
+                href="mailto:{{site.contacts.email}}"
+              >
+                {{site.contacts.email}}
+              </a>
+            </div>
+          </li>
+          <li class="contact-item">
+            {{icon "location_on" class="contact-item__icon"}}
+            <div>
+              <p class="contact-item__label">{{t.contacts.address}}</p>
+              <p class="contact-item__value">{{t.contacts.addressValue}}</p>
+              <a
+                class="contact-item__map"
+                href="{{site.contacts.mapUrl}}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {{icon "map"}} {{t.contacts.mapLink}}
+                <span class="visually-hidden">{{t.contacts.newTab}}</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+
+        <div class="contacts__hours contact-item">
+          {{icon "schedule" class="contact-item__icon"}}
+          <div>
+            <h3 class="contact-item__label">{{t.contacts.hoursTitle}}</h3>
+            <dl class="contacts__hours-list">
+              {{#each site.contacts.hours}}
+              <div class="contacts__hours-row">
+                <dt>{{tr "contacts" "days" id}}</dt>
+                <dd class="contact-item__value">
+                  {{#if time}}{{time}}{{else}}{{@root.t.contacts.closed}}{{/if}}
+                </dd>
+              </div>
+              {{/each}}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contacts__media" aria-hidden="true">
+      <img
+        class="contacts__sketch"
+        src="/assets/images/contacts/car-sketch.png"
+        alt=""
+        width="1200"
+        height="600"
+        loading="lazy"
+      />
+      <!-- Placeholder: will be replaced by a photo of the workshop -->
+      <div class="contacts__media-frame">
+        <div class="media-placeholder">
+          {{icon "garage" class="media-placeholder__icon"}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

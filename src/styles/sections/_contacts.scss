@@ -1,0 +1,218 @@
+@use '../abstracts' as *;
+
+// Contacts on the left; on the right the workshop photo bleeding to the viewport edge, cut along the
+// accent stripe, with a faint car sketch on the light background tucked under the stripe.
+// p4..p6: no photo, the right column only keeps the stripe and the sketch on the light background,
+// so the contacts get more width. Phone/tablet: contacts only (all of it is decorative).
+.contacts {
+  --contacts-content-share: 3 / 4;
+
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--color-bg-muted) 0%, var(--color-bg) 100%);
+
+  @include breakpoint(p6) {
+    --contacts-content-share: 7 / 12;
+  }
+}
+
+.contacts__layout {
+  display: grid;
+
+  @include breakpoint(p4) {
+    @include bleed-grid(var(--contacts-content-share));
+
+    min-height: clamp(30rem, 38vw, 38rem);
+  }
+}
+
+.contacts__content {
+  position: relative;
+  z-index: 2; // above the sketch that overlaps the column
+  padding: var(--space-section) var(--container-gutter);
+
+  @include breakpoint(p4) {
+    grid-column: content-start / split;
+    align-self: center;
+    padding: var(--space-section) var(--space-8) var(--space-section) 0;
+  }
+}
+
+.contacts__title {
+  position: relative;
+  font-size: var(--font-size-h2-compact);
+
+  &::before {
+    @include accent-bar-above;
+  }
+}
+
+.contacts__subtitle {
+  position: relative;
+  max-width: 34rem;
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+// Phone: contacts, then opening hours. p2+: side by side, split by the vertical divider.
+.contacts__details {
+  position: relative;
+  display: grid;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+
+  @include breakpoint(p2) {
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+    gap: 0;
+  }
+}
+
+.contacts__list {
+  display: grid;
+  gap: var(--space-6);
+
+  @include breakpoint(p2) {
+    padding-right: var(--space-8);
+  }
+}
+
+.contacts__hours {
+  position: relative;
+
+  @include breakpoint(p2) {
+    padding-left: var(--space-8);
+
+    &::before {
+      @include vertical-divider;
+    }
+  }
+}
+
+.contacts__hours-list {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-3) 0 0;
+
+  dt {
+    font-size: var(--font-size-s);
+    color: var(--color-text-muted);
+  }
+
+  dd {
+    margin: 0;
+    white-space: nowrap; // "09:00 – 18:00" stays on one line
+  }
+}
+
+// Icon + small label + bold value
+.contact-item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+}
+
+// Decorative: the label and value next to it carry the meaning
+.contact-item__icon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-accent);
+}
+
+.contact-item__label {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-muted);
+}
+
+.contact-item__value {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-text);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.contact-item__value[href]:hover {
+  text-decoration: underline;
+}
+
+.contact-item__map {
+  display: inline-flex;
+  gap: var(--space-1);
+  align-items: center;
+
+  margin-top: var(--space-2);
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-semibold);
+  // Brand accent on the icons and the underline; the text stays graphite, because yellow text on
+  // the light background is far below the WCAG contrast minimum (1.6:1)
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 0.125rem;
+  text-underline-offset: 0.25rem;
+
+  .icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    color: var(--color-accent);
+  }
+}
+
+.contacts__media {
+  display: none;
+
+  @include breakpoint(p4) {
+    position: relative;
+    display: block;
+    grid-column: split / full-end;
+
+    // Same fading stripe as in the hero; it runs along the edge the photo is cut along
+    // (see .contacts__media-frame)
+    &::before {
+      @include tapered-stripe(var(--stripe-run), var(--stripe-top), var(--stripe-bottom));
+
+      z-index: 2;
+      left: calc(-1 * var(--stripe-overhang));
+    }
+  }
+}
+
+// Faint car sketch on the light background left of the stripe, its right end tucked under the
+// stripe (and under the photo beyond it, from p6). Positioned from the start of the right column,
+// like the stripe, so it keeps the same place relative to the stripe on every width; it overlaps
+// the text column too (the text stays above it).
+// Layers: sketch 0 < photo 1 < stripe 2; the text column is above all of them.
+.contacts__sketch {
+  pointer-events: none;
+
+  position: absolute;
+  z-index: 0;
+  top: var(--space-8);
+  left: -7rem;
+
+  width: 26rem;
+  max-width: none; // keep the size even where the right column is narrower than the sketch
+
+  opacity: 0.2;
+}
+
+// The photo is shown from p6 and cut along the stripe: only the part right of the stripe is visible.
+// The frame starts --stripe-overhang left of the column, at the same x as the stripe box, so the
+// cut line can follow the right edge of the stripe along the full height.
+.contacts__media-frame {
+  --cut-top: var(--stripe-run);
+  --cut-bottom: var(--stripe-bottom);
+
+  position: absolute;
+  z-index: 1;
+  inset: 0 0 0 calc(-1 * var(--stripe-overhang));
+
+  display: none;
+
+  clip-path: polygon(var(--cut-top) 0, 100% 0, 100% 100%, var(--cut-bottom) 100%);
+
+  @include breakpoint(p6) {
+    display: block;
+  }
+}

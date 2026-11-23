@@ -2,13 +2,17 @@
 // (hero, diagnostics, repair).
 
 // Grid lines: full-start | gutter | content-start | first column | split | second column |
-// content-end | gutter | full-end. $first-share is the part of the container taken by the first
+// content-end | gutter | full-end. $first-share is the part of the content width taken by the first
 // column (e.g. var(--hero-content-share) = 5 / 12). Media spans to full-start or full-end.
+// The content width is the same as in .container: the viewport minus gutters, capped by
+// --container-max-width, so the share holds on every screen width.
 @mixin bleed-grid($first-share) {
+  $content: min(100% - 2 * var(--container-gutter), var(--container-max-width));
+
   grid-template-columns:
     [full-start] minmax(var(--container-gutter), 1fr)
-    [content-start] minmax(0, calc(var(--container-max-width) * #{$first-share}))
-    [split] minmax(0, calc(var(--container-max-width) * (1 - #{$first-share})))
+    [content-start] calc(#{$content} * #{$first-share})
+    [split] calc(#{$content} * (1 - #{$first-share}))
     [content-end] minmax(var(--container-gutter), 1fr)
     [full-end];
 }

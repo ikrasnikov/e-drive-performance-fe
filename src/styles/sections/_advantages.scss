@@ -103,16 +103,7 @@
 .advantages__item + .advantages__item::before,
 .advantages__item:first-child::before {
   @include breakpoint(p4) {
-    content: '';
-
-    position: absolute;
-    top: 15%;
-    bottom: 15%;
-    left: 0;
-
-    width: 3px; // stylelint-disable-line unit-disallowed-list -- thin divider
-
-    background-color: var(--color-border);
+    @include vertical-divider;
   }
 }
 
