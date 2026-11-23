@@ -1,0 +1,162 @@
+@use '../abstracts' as *;
+
+// Dark section with the request form on the left and media on the right bleeding to the viewport
+// edge, fading in from the left. Phone/tablet: only the form (the media is decorative).
+.booking {
+  --booking-content-share: 7 / 12;
+  --booking-fade: 40%;
+  --form-label-color: var(--color-text-inverse);
+  --form-hint-color: var(--color-text-inverse-muted);
+  --form-error-color: var(--color-error-inverse);
+
+  overflow: hidden;
+  color: var(--color-text-inverse);
+  background-color: var(--color-bg-inverse);
+}
+
+.booking__layout {
+  display: grid;
+
+  @include breakpoint(p4) {
+    @include bleed-grid(var(--booking-content-share));
+  }
+}
+
+.booking__content {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-section) var(--container-gutter);
+
+  @include breakpoint(p4) {
+    grid-column: content-start / split;
+    padding: var(--space-section) var(--space-8) var(--space-section) 0;
+  }
+}
+
+.booking__title {
+  font-size: var(--font-size-h2-compact);
+
+  &::before {
+    @include accent-bar-above;
+  }
+}
+
+.booking__subtitle {
+  margin-top: var(--space-3);
+  color: var(--color-text-inverse-muted);
+}
+
+.booking-form {
+  // Space reserved under the actions for the success message, so it appears without moving
+  // anything on the page
+  --booking-status-space: 4.5rem;
+
+  position: relative;
+  margin-top: var(--space-8);
+  padding-bottom: var(--booking-status-space);
+}
+
+.booking-form__grid {
+  display: grid;
+  gap: var(--space-4);
+
+  @include breakpoint(p2) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+// Two columns: each field (label + control) takes two rows of the form grid via subgrid, so the
+// fields of one row share the label row. A label that wraps to two lines (long translations) no
+// longer pushes its control lower than the neighbour's: labels sit at the top of their row.
+// Error lines are absolute (see _form.scss) and take no rows.
+.booking-form__grid > .form-field {
+  @include breakpoint(p2) {
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+  }
+}
+
+.booking-form__wide {
+  @include breakpoint(p2) {
+    grid-column: 1 / -1;
+  }
+}
+
+.booking-form__trap {
+  @include visually-hidden;
+}
+
+.booking-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  align-items: center;
+
+  margin-top: var(--space-6);
+}
+
+.booking-form__consent {
+  max-width: 26rem;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-inverse-muted);
+
+  a {
+    color: var(--color-text-inverse);
+  }
+}
+
+// Success message: absolute in the reserved space; invisible (also for screen readers) until
+// --visible, then it fades in
+.booking-form__status {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateY(var(--space-2));
+
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-s);
+
+  font-weight: var(--font-weight-semibold);
+
+  visibility: hidden;
+  opacity: 0;
+  background-color: rgb(255, 193, 7, 0.12);
+
+  transition:
+    opacity var(--transition-base),
+    transform var(--transition-base),
+    visibility 0s linear var(--transition-base);
+
+  .icon {
+    color: var(--color-accent);
+  }
+}
+
+.booking-form__status--visible {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
+}
+
+.booking__media {
+  display: none;
+
+  @include breakpoint(p4) {
+    position: relative;
+    display: block;
+    grid-column: split / full-end;
+  }
+}
+
+.booking__media-frame {
+  position: absolute;
+  inset: 0;
+
+  @include media-fade(90deg, var(--booking-fade));
+}

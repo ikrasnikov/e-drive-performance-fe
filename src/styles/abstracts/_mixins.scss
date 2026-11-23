@@ -11,3 +11,17 @@
 
   clip-path: inset(50%);
 }
+
+// Short accent bar above a section title (the "eyebrow" bar without text); use in ::before
+@mixin accent-bar-above {
+  content: '';
+
+  display: block;
+
+  width: 2.5rem;
+  height: var(--accent-bar-height);
+  margin-bottom: var(--space-4);
+  border-radius: var(--radius-s);
+
+  background-color: var(--color-accent);
+}

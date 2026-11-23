@@ -63,3 +63,13 @@ button {
   outline: 0.1875rem solid var(--color-focus);
   outline-offset: 0.125rem;
 }
+
+// Respect the system "reduce motion" setting: no transitions or animations
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important; // stylelint-disable-line declaration-no-important -- accessibility override
+    animation-duration: 0s !important; // stylelint-disable-line declaration-no-important -- accessibility override
+  }
+}

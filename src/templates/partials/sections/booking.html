@@ -1,0 +1,143 @@
+<section id="booking" class="booking" aria-labelledby="booking-title">
+  <div class="booking__layout">
+    <div class="booking__content">
+      <h2 id="booking-title" class="booking__title">{{t.booking.title}}</h2>
+      <p class="booking__subtitle">{{t.booking.subtitle}}</p>
+
+      <!-- Sending is not connected yet: the form only validates on the client (see booking-form.js) -->
+      <form
+        class="booking-form"
+        novalidate
+        data-booking-form
+        data-error-required="{{t.booking.errors.required}}"
+        data-error-phone="{{t.booking.errors.phone}}"
+        data-error-email="{{t.booking.errors.email}}"
+        data-error-sunday="{{t.booking.errors.sunday}}"
+        data-error-past="{{t.booking.errors.past}}"
+      >
+        <div class="booking-form__grid">
+          <div class="form-field form-field--with-error">
+            <label class="form-field__label" for="booking-name">
+              {{t.booking.fields.name}} <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id="booking-name"
+              class="form-field__control"
+              type="text"
+              name="name"
+              autocomplete="name"
+              required
+              aria-describedby="booking-name-error"
+            />
+            <p id="booking-name-error" class="form-field__error"></p>
+          </div>
+
+          <div class="form-field form-field--with-error">
+            <label class="form-field__label" for="booking-phone">
+              {{t.booking.fields.phone}} <span aria-hidden="true">*</span>
+            </label>
+            <input
+              id="booking-phone"
+              class="form-field__control"
+              type="tel"
+              name="phone"
+              autocomplete="tel"
+              inputmode="tel"
+              placeholder="{{t.booking.phonePlaceholder}}"
+              data-phone
+              required
+              aria-describedby="booking-phone-error"
+            />
+            <p id="booking-phone-error" class="form-field__error"></p>
+          </div>
+
+          <div class="form-field form-field--with-error">
+            <label class="form-field__label" for="booking-email">
+              {{t.booking.fields.email}}
+              <span class="form-field__optional">({{t.booking.optional}})</span>
+            </label>
+            <input
+              id="booking-email"
+              class="form-field__control"
+              type="email"
+              name="email"
+              autocomplete="email"
+              aria-describedby="booking-email-error"
+            />
+            <p id="booking-email-error" class="form-field__error"></p>
+          </div>
+
+          <div class="form-field form-field--with-error">
+            <label class="form-field__label" for="booking-date">
+              {{t.booking.fields.date}}
+              <span class="form-field__optional">({{t.booking.optional}})</span>
+            </label>
+            <input
+              id="booking-date"
+              class="form-field__control"
+              type="date"
+              name="date"
+              aria-describedby="booking-date-error"
+              data-no-sundays
+            />
+            <p id="booking-date-error" class="form-field__error"></p>
+          </div>
+
+          <div class="form-field booking-form__wide">
+            <label class="form-field__label" for="booking-message">
+              {{t.booking.fields.message}}
+              <span class="form-field__optional">({{t.booking.optional}})</span>
+            </label>
+            <textarea
+              id="booking-message"
+              class="form-field__control form-field__control--textarea"
+              name="message"
+              rows="4"
+              maxlength="1000"
+              placeholder="{{t.booking.messagePlaceholder}}"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Spam trap (honeypot): hidden from people, bots fill it in; Web3Forms drops such requests -->
+        <input
+          class="booking-form__trap"
+          type="checkbox"
+          name="botcheck"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
+
+        <div class="booking-form__actions">
+          <button class="button button--primary" type="submit">
+            {{icon "send"}} {{t.booking.submit}}
+          </button>
+          <p class="booking-form__consent">
+            {{t.booking.consentText}}
+            <!-- TODO: link to the privacy policy page when it exists -->
+            <a href="#privacy">{{t.booking.consentLink}}</a>.
+          </p>
+        </div>
+
+        <p
+          class="booking-form__status"
+          role="status"
+          data-booking-status
+          data-message="{{t.booking.success}}"
+        >
+          {{icon "check_circle"}} <span data-booking-status-text></span>
+        </p>
+      </form>
+    </div>
+
+    <div class="booking__media" aria-hidden="true">
+      <!-- Placeholder: will be replaced by a photo of the car -->
+      <div class="booking__media-frame">
+        <div class="media-placeholder">
+          {{icon "electric_car" class="media-placeholder__icon"}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

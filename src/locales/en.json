@@ -80,6 +80,31 @@
       "performance": "Better performance"
     }
   },
+  "booking": {
+    "title": "Service request",
+    "subtitle": "Leave a request and we will contact you to confirm an appointment.",
+    "fields": {
+      "name": "Name",
+      "phone": "Phone",
+      "email": "Email",
+      "date": "Preferred date",
+      "message": "Problem description"
+    },
+    "optional": "optional",
+    "phonePlaceholder": "+359 …",
+    "messagePlaceholder": "Briefly describe what is happening with the car",
+    "submit": "Send request",
+    "consentText": "By sending the request you agree to the",
+    "consentLink": "Privacy Policy",
+    "errors": {
+      "required": "Please fill in this field",
+      "phone": "Enter a valid phone number",
+      "email": "Enter a valid email",
+      "sunday": "We are closed on Sundays — please choose another day",
+      "past": "Choose today or a future date"
+    },
+    "success": "Thank you! We will contact you soon."
+  },
   "footer": {
     "rights": "© e-drive performance. All rights reserved."
   }

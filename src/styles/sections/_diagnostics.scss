@@ -89,8 +89,8 @@
     flex-shrink: 0;
 
     width: 2.5rem;
-    height: 0.25rem;
-    margin-top: calc(0.5lh - 0.125rem);
+    height: var(--accent-bar-height);
+    margin-top: calc(0.5lh - var(--accent-bar-height) / 2);
     border-radius: var(--radius-s);
 
     background-color: var(--color-accent);

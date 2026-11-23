@@ -24,6 +24,8 @@
   --color-on-accent: var(--color-graphite);
   --color-border: var(--color-light-gray);
   --color-focus: var(--color-accent);
+  --color-error: #b42318; // 6.9:1 on white
+  --color-error-inverse: #ff9b8f; // 8.5:1 on graphite
 
   // Typography
   --font-family-base: 'Montserrat', system-ui, -apple-system, 'Segoe UI', roboto, sans-serif;
@@ -55,6 +57,7 @@
   --space-section: clamp(3rem, 2rem + 4vw, 6rem);
 
   // Shape & depth
+  --accent-bar-height: 0.3rem; // yellow bar before/above titles and eyebrows
   --radius-s: 0.375rem;
   --radius-m: 0.75rem;
   --radius-l: 1rem;

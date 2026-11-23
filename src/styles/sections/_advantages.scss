@@ -24,6 +24,10 @@
 .advantages__title {
   font-size: var(--font-size-h2-compact);
 
+  &::before {
+    @include accent-bar-above;
+  }
+
   // Next to the row the title is a bit smaller, leaving more width for the five items
   @include breakpoint(p6) {
     font-size: 1.75rem;

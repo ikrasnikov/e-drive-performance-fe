@@ -42,16 +42,7 @@
   font-size: var(--font-size-h2-compact);
 
   &::before {
-    content: '';
-
-    display: block;
-
-    width: 2.5rem;
-    height: 0.25rem;
-    margin-bottom: var(--space-4);
-    border-radius: var(--radius-s);
-
-    background-color: var(--color-accent);
+    @include accent-bar-above;
   }
 }
 

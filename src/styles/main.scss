@@ -6,6 +6,7 @@
 @use 'base/utilities';
 @use 'components/button';
 @use 'components/eyebrow';
+@use 'components/form';
 @use 'components/language-switcher';
 @use 'components/media-placeholder';
 @use 'components/section-header';
@@ -16,6 +17,7 @@
 @use 'layout/site-nav';
 @use 'layout/site-footer';
 @use 'sections/advantages';
+@use 'sections/booking';
 @use 'sections/diagnostics';
 @use 'sections/hero';
 @use 'sections/repair';
