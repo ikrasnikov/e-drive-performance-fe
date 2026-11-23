@@ -11,12 +11,27 @@ const BRAND_ICONS_DIR = resolve(import.meta.dirname, '..', 'src', 'assets', 'ico
 
 // Brand icons are drawn in two colors, mapped to CSS so the icons follow the theme:
 // graphite (also plain black) fills/strokes -> currentColor, accent fills -> .icon__accent.
-// White fills (inner backgrounds) become transparent, so icons also work on dark sections.
+// White fills (inner backgrounds) become transparent, so icons also work on dark sections;
+// white inside <mask>/<clipPath> is left alone, there it defines the visible area.
 const BRAND_COLORS = {
   graphite: /(fill|stroke)="(#0f1216|black|#000|#000000)"/gi,
   accent: /fill="#ffc107"/gi,
   white: /fill="(white|#fff|#ffffff)"/gi,
 };
+const MASK_BLOCKS = /(<(mask|clipPath)\b[\s\S]*?<\/\2>)/;
+
+const clearWhiteFills = (svg) =>
+  svg
+    .split(MASK_BLOCKS)
+    .map((part, index) => {
+      // split() with capture groups yields [outside, block, tagName, outside, ...]
+      const kind = index % 3;
+      if (kind === 2) {
+        return '';
+      }
+      return kind === 0 ? part.replace(BRAND_COLORS.white, 'fill="none"') : part;
+    })
+    .join('');
 
 // {{icon "bolt"}} -> Material Symbols (outlined), UI icons
 // {{icon "brand:services/repair"}} -> src/assets/icons/services/repair.svg, custom illustrative icons
@@ -29,10 +44,11 @@ const ICON_SETS = {
     file: (name) => join(BRAND_ICONS_DIR, `${name}.svg`),
     hint: `add the SVG to ${BRAND_ICONS_DIR}`,
     transform: (svg) =>
-      svg
-        .replace(BRAND_COLORS.graphite, '$1="currentColor"')
-        .replace(BRAND_COLORS.accent, 'class="icon__accent"')
-        .replace(BRAND_COLORS.white, 'fill="none"'),
+      clearWhiteFills(
+        svg
+          .replace(BRAND_COLORS.graphite, '$1="currentColor"')
+          .replace(BRAND_COLORS.accent, 'class="icon__accent"'),
+      ),
     className: 'icon--brand',
   },
 };

@@ -30,5 +30,19 @@
       "id": "performance",
       "icon": "brand:services/performance"
     }
+  ],
+  "diagnostics": [
+    {
+      "id": "batteryHealth",
+      "icon": "brand:diagnostics/battery-health"
+    },
+    {
+      "id": "errorAnalysis",
+      "icon": "brand:diagnostics/error-analysis"
+    },
+    {
+      "id": "systemCheck",
+      "icon": "brand:diagnostics/system-check"
+    }
   ]
 }

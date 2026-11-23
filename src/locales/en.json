@@ -51,6 +51,15 @@
       "text": "Optimisation, tuning and better dynamics"
     }
   },
+  "diagnostics": {
+    "title": "Professional diagnostics",
+    "text": "In-depth analysis of every system, including the battery, drivetrain, thermal management and charging system.",
+    "features": {
+      "batteryHealth": "Battery health",
+      "errorAnalysis": "Error analysis",
+      "systemCheck": "Full system check"
+    }
+  },
   "footer": {
     "rights": "© e-drive performance. All rights reserved."
   }

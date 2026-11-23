@@ -1,0 +1,164 @@
+@use '../abstracts' as *;
+
+// Dark banner, mirror of the hero: media on the left fading into the graphite panel, text and
+// three feature items on the right; an accent stripe sits in the bottom-right corner.
+// Phone/tablet: media on top fading into the panel below it.
+.diagnostics {
+  --diagnostics-media-share: 5 / 12;
+  --diagnostics-fade: 40%;
+
+  position: relative;
+  overflow: hidden;
+  color: var(--color-text-inverse);
+  background-color: var(--color-bg-inverse);
+
+  &::after {
+    @include breakpoint(p4) {
+      content: '';
+
+      position: absolute;
+      right: 0;
+      bottom: 0;
+
+      width: 9rem;
+      height: 55%;
+
+      background: linear-gradient(0deg, var(--color-accent) 0%, rgb(255, 193, 7, 0) 100%);
+      clip-path: polygon(100% 0, 100% 100%, 35% 100%);
+    }
+  }
+}
+
+.diagnostics__layout {
+  display: grid;
+
+  @include breakpoint(p4) {
+    grid-template-columns:
+      [full-start] minmax(var(--container-gutter), 1fr)
+      [content-start] minmax(0, calc(var(--container-max-width) * var(--diagnostics-media-share)))
+      [text-start] minmax(
+        0,
+        calc(var(--container-max-width) * (1 - var(--diagnostics-media-share)))
+      )
+      [content-end] minmax(var(--container-gutter), 1fr)
+      [full-end];
+    min-height: clamp(24rem, 32vw, 30rem);
+  }
+}
+
+.diagnostics__media {
+  position: relative;
+
+  @include breakpoint(p4) {
+    grid-column: full-start / text-start;
+  }
+}
+
+.diagnostics__media-frame {
+  aspect-ratio: 16 / 10;
+  mask-image: linear-gradient(0deg, transparent 0%, #000 35%);
+
+  @include breakpoint(p2) {
+    aspect-ratio: 2 / 1;
+  }
+
+  @include breakpoint(p4) {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+
+    // Eased fade towards the text panel on the right
+    mask-image: linear-gradient(
+      270deg,
+      transparent 0%,
+      rgb(0, 0, 0, 0.1) calc(var(--diagnostics-fade) * 0.25),
+      rgb(0, 0, 0, 0.35) calc(var(--diagnostics-fade) * 0.5),
+      rgb(0, 0, 0, 0.75) calc(var(--diagnostics-fade) * 0.75),
+      #000 var(--diagnostics-fade)
+    );
+  }
+}
+
+.diagnostics__content {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-4) var(--container-gutter) var(--space-section);
+
+  @include breakpoint(p4) {
+    grid-column: text-start / content-end;
+    align-self: center;
+    padding: var(--space-12) 0 var(--space-12) var(--space-8);
+  }
+}
+
+.diagnostics__title {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+
+  // The bar is centered on the first line, also when the title wraps
+  &::before {
+    content: '';
+
+    flex-shrink: 0;
+
+    width: 2.5rem;
+    height: 0.25rem;
+    margin-top: calc(0.5lh - 0.125rem);
+    border-radius: var(--radius-s);
+
+    background-color: var(--color-accent);
+  }
+}
+
+.diagnostics__text {
+  max-width: 36rem;
+  margin-top: var(--space-4);
+  color: var(--color-text-inverse-muted);
+}
+
+// Phone: rows with the icon on the left; p2+: three columns split by thin dividers
+.diagnostics__features {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+
+  @include breakpoint(p2) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+}
+
+.diagnostics__feature {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-semibold);
+
+  @include breakpoint(p2) {
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-inline: var(--space-4);
+    text-align: center;
+  }
+}
+
+.diagnostics__feature + .diagnostics__feature {
+  @include breakpoint(p2) {
+    border-left: 1px solid var(--color-border-inverse);
+  }
+}
+
+// Graphite currentColor keeps dark details (e.g. the monitor screen) dark on this background
+.diagnostics__feature-icon {
+  display: inline-flex;
+  color: var(--color-graphite);
+
+  .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}

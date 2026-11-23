@@ -17,6 +17,8 @@
   --color-text: var(--color-graphite);
   --color-text-muted: var(--color-slate);
   --color-text-inverse: var(--color-white);
+  --color-text-inverse-muted: #c3c7cd; // 10.6:1 on graphite
+  --color-border-inverse: rgb(255, 255, 255, 0.14);
   --color-text-accent-inverse: var(--color-accent);
   --color-accent-hover: #ffcd38;
   --color-on-accent: var(--color-graphite);

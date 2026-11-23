@@ -1,0 +1,32 @@
+<section
+  id="diagnostics"
+  class="diagnostics"
+  aria-labelledby="diagnostics-title"
+>
+  <div class="diagnostics__layout">
+    <div class="diagnostics__media">
+      <!-- Placeholder: will be replaced by a photo of the diagnostics process -->
+      <div class="diagnostics__media-frame">
+        <div class="media-placeholder" aria-hidden="true">
+          {{icon "monitor_heart" class="media-placeholder__icon"}}
+        </div>
+      </div>
+    </div>
+
+    <div class="diagnostics__content">
+      <h2 id="diagnostics-title" class="diagnostics__title">
+        {{t.diagnostics.title}}
+      </h2>
+      <p class="diagnostics__text">{{t.diagnostics.text}}</p>
+
+      <ul class="diagnostics__features">
+        {{#each site.diagnostics}}
+        <li class="diagnostics__feature">
+          <span class="diagnostics__feature-icon">{{icon icon}}</span>
+          {{tr "diagnostics" "features" id}}
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>
