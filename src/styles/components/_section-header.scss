@@ -24,6 +24,7 @@
 .section-header__title {
   @include breakpoint(p4) {
     grid-area: title;
+    max-width: var(--split-content-width); // same width as the text of the split sections
   }
 }
 

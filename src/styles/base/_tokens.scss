@@ -62,8 +62,13 @@
   --shadow-raised: 0 0.5rem 2rem rgb(15, 18, 22, 0.16);
 
   // Layout
-  --container-max-width: 80rem;
+  --container-max-width: 90rem;
   --container-gutter: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+  // Text column of the split sections (hero, repair) and max width of section titles
+  --split-content-share: 5 / 12;
+  --split-content-width: calc(
+    var(--container-max-width) * var(--split-content-share) - var(--space-8)
+  );
   --header-height: 4rem;
 
   // Motion

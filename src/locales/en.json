@@ -70,6 +70,16 @@
       "thermal": "Cooling and thermal system maintenance"
     }
   },
+  "advantages": {
+    "titleWhy": "Why",
+    "items": {
+      "customerExperience": "Focus on customer experience",
+      "team": "Experienced team and expertise",
+      "equipment": "Modern equipment",
+      "quality": "Quality and reliability",
+      "performance": "Better performance"
+    }
+  },
   "footer": {
     "rights": "© e-drive performance. All rights reserved."
   }

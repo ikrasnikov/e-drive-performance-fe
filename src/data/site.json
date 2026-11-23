@@ -45,5 +45,27 @@
       "icon": "brand:diagnostics/system-check"
     }
   ],
-  "repair": ["mechanical", "highVoltage", "components", "thermal"]
+  "repair": ["mechanical", "highVoltage", "components", "thermal"],
+  "advantages": [
+    {
+      "id": "customerExperience",
+      "icon": "brand:advantages/customer-care"
+    },
+    {
+      "id": "team",
+      "icon": "verified_user"
+    },
+    {
+      "id": "equipment",
+      "icon": "settings"
+    },
+    {
+      "id": "quality",
+      "icon": "bolt"
+    },
+    {
+      "id": "performance",
+      "icon": "brand:advantages/performance"
+    }
+  ]
 }

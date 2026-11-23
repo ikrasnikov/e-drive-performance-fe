@@ -3,7 +3,7 @@
 Custom illustrative icons, inlined by `{{icon "brand:<folder>/<name>"}}` (e.g.
 `{{icon "brand:services/repair"}}`).
 
-Delivered set (48×48, graphite + accent): `services/` (5), `diagnostics/` (3), `advantages/` (5).
+Delivered set (48×48): `services/` (5), `diagnostics/` (3), `advantages/` (2; the other three advantages use Material Symbols).
 To replace an icon, overwrite the file keeping its name.
 
 Requirements for delivered files:

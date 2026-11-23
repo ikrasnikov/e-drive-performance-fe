@@ -4,7 +4,7 @@
 // the viewport edge, fading in from the left with the tapered accent stripe over the fade.
 // Phone/tablet: text, then full-width media below, fading in from the top.
 .repair {
-  --repair-content-share: 5 / 12;
+  --repair-content-share: var(--split-content-share);
   --repair-fade: 35%;
   --repair-stripe-run: 12rem;
   --repair-stripe-top: 2.5rem;

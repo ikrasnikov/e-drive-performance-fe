@@ -1,0 +1,28 @@
+<section
+  id="advantages"
+  class="section advantages"
+  aria-labelledby="advantages-title"
+>
+  <div class="container advantages__layout">
+    <h2 id="advantages-title" class="advantages__title">
+      {{t.advantages.titleWhy}}
+      <!-- The "?" is part of the accessible name only: visually the logo ends the title -->
+      <img
+        class="advantages__logo"
+        src="/assets/images/logo/logo-text-one-line.svg"
+        alt="e-drive performance?"
+        width="1243"
+        height="127"
+      />
+    </h2>
+
+    <ul class="advantages__list">
+      {{#each site.advantages}}
+      <li class="advantages__item">
+        <span class="advantages__icon">{{icon icon}}</span>
+        {{tr "advantages" "items" id}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>

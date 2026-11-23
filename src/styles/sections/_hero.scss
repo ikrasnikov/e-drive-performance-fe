@@ -4,7 +4,7 @@
 // Desktop (p4+): text takes --hero-content-share of the container, media fills the rest up to the
 // right edge of the viewport and fades in from the left; a tapered accent stripe crosses the fade.
 .hero {
-  --hero-content-share: 5 / 12;
+  --hero-content-share: var(--split-content-share);
   --hero-fade: 35%;
   --hero-stripe-run: 16rem; // horizontal distance the stripe travels from top to bottom
   --hero-stripe-top: 3rem; // stripe width at the top

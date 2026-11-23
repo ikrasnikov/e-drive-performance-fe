@@ -1,0 +1,137 @@
+@use '../abstracts' as *;
+
+// "Why e-drive performance?": title, then five advantages with icons split by thin dividers.
+// Phone: rows with the icon on the left; p2: a wrapping row (3 + 2); p4: all five in one row;
+// p6: the title sits at the left edge of the container and the row at the right edge; the free
+// space on wide screens goes between them instead of after the last item.
+.advantages {
+  --advantages-item-width: clamp(9rem, 13vw, 12.5rem);
+
+  border-top: 1px solid var(--color-border);
+}
+
+.advantages__layout {
+  display: grid;
+  gap: var(--space-8);
+
+  @include breakpoint(p6) {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-12);
+    align-items: center;
+  }
+}
+
+.advantages__title {
+  font-size: var(--font-size-h2-compact);
+
+  // Next to the row the title is a bit smaller, leaving more width for the five items
+  @include breakpoint(p6) {
+    font-size: 1.75rem;
+  }
+}
+
+// One-line logo on its own line under "Why"
+.advantages__logo {
+  width: min(100%, 24rem);
+  margin-top: var(--space-3);
+
+  // Next to the row: smaller at p6, so the five items still fit beside it
+  @include breakpoint(p6) {
+    width: 20rem;
+  }
+
+  @include breakpoint(p7) {
+    width: 24rem;
+  }
+}
+
+.advantages__list {
+  display: grid;
+  gap: var(--space-4);
+
+  @include breakpoint(p2) {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--space-8);
+    justify-content: center;
+  }
+
+  // One row: spacing comes from the item padding around the dividers, not from a gap
+  @include breakpoint(p4) {
+    flex-wrap: nowrap;
+    column-gap: 0;
+  }
+
+  // Next to the title the row is pushed to the right edge of the container
+  @include breakpoint(p6) {
+    justify-content: flex-end;
+  }
+}
+
+.advantages__item {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-semibold);
+
+  @include breakpoint(p2) {
+    position: relative;
+
+    flex: 0 1 calc(100% / 3);
+    flex-direction: column;
+    gap: var(--space-3);
+
+    padding-inline: var(--space-3);
+
+    text-align: center;
+  }
+
+  @include breakpoint(p4) {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: calc(var(--space-4) + var(--space-1)); // 20px
+  }
+
+  // Equal fixed-width items, so the row has its own width and can sit at the right edge;
+  // from ~1540px wide the items reach 12.5rem and fit "производителност" without a hyphen
+  @include breakpoint(p6) {
+    flex: 0 0 var(--advantages-item-width);
+  }
+}
+
+// Dividers: shorter than the item (inset top and bottom) and 3px thick, as in the design.
+// Between items from p4 (all items in one row); before the first item from p6, where it also
+// separates the row from the title on the left.
+.advantages__item + .advantages__item::before,
+.advantages__item:first-child::before {
+  @include breakpoint(p4) {
+    content: '';
+
+    position: absolute;
+    top: 15%;
+    bottom: 15%;
+    left: 0;
+
+    width: 3px; // stylelint-disable-line unit-disallowed-list -- thin divider
+
+    background-color: var(--color-border);
+  }
+}
+
+.advantages__item:first-child::before {
+  @include breakpoint(p6, max) {
+    content: none;
+  }
+}
+
+.advantages__icon {
+  display: inline-flex;
+  color: var(--color-graphite);
+
+  .icon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
