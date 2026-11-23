@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="{{lang}}">
+  {{> head}}
+  <body class="page">
+    <a class="skip-link" href="#main">{{t.a11y.skipToContent}}</a>
+
+    {{> header}}
+
+    <main id="main" class="page__main legal-page" tabindex="-1">
+      <div class="container legal-page__inner">
+        <!-- Goes back in history when the visitor came from this site (scripts/components/back-link.js) -->
+        <a class="legal-page__back" href="{{homeHref}}" data-back-link>
+          {{icon "arrow_back"}} {{t.legal.back}}
+        </a>
+
+        <h1 class="legal-page__title">{{legal.title}}</h1>
+        <p class="legal-page__updated">
+          {{t.legal.updated}}: <time>{{site.legalUpdated}}</time>
+        </p>
+        <p class="legal-page__lead">{{rich legal.lead}}</p>
+
+        {{#each legal.sections}}
+        <section class="legal-page__section">
+          <h2 class="legal-page__heading">{{title}}</h2>
+          {{#each text}}
+          <p>{{rich this}}</p>
+          {{/each}} {{#if list.length}}
+          <ul class="legal-page__list">
+            {{#each list}}
+            <li>{{rich this}}</li>
+            {{/each}}
+          </ul>
+          {{/if}} {{#if items.length}}
+          <dl class="legal-page__details">
+            {{#each items}}
+            <div>
+              <dt>{{term}}</dt>
+              <dd>{{rich value}}</dd>
+            </div>
+            {{/each}}
+          </dl>
+          {{/if}}
+        </section>
+        {{/each}}
+      </div>
+    </main>
+
+    {{> footer}} {{> cookie-consent}}
+
+    <script type="module" src="/scripts/main.js"></script>
+  </body>
+</html>

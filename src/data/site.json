@@ -111,5 +111,17 @@
       "icon": "tb:brand-linkedin",
       "url": ""
     }
-  ]
+  ],
+  "company": {
+    "name": "[COMPANY NAME]",
+    "uic": "[UIC]",
+    "vat": "[VAT NUMBER]",
+    "address": "[REGISTERED ADDRESS]",
+    "representative": "[REPRESENTATIVE]"
+  },
+  "authorities": {
+    "consumerProtection": "https://kzp.bg/",
+    "dataProtection": "https://www.cpdp.bg/"
+  },
+  "legalUpdated": "24.11.2026"
 }

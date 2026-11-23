@@ -1,0 +1,113 @@
+@use '../abstracts' as *;
+
+// Legal documents: a narrow column of text for comfortable reading, "Back" link on top,
+// the title with the accent bar, date of the last update, then the sections.
+.legal-page {
+  padding-block: var(--space-section);
+}
+
+.legal-page__inner {
+  max-width: calc(48rem + 2 * var(--container-gutter));
+}
+
+.legal-page__back {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 0.125rem;
+  text-underline-offset: 0.25rem;
+
+  .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-accent);
+    transition: transform var(--transition-fast);
+  }
+
+  &:hover .icon {
+    transform: translateX(calc(-1 * var(--space-1)));
+  }
+}
+
+.legal-page__title {
+  margin-top: var(--space-8);
+  font-size: var(--font-size-h2);
+
+  &::before {
+    @include accent-bar-above;
+  }
+}
+
+.legal-page__updated {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-s);
+  color: var(--color-text-muted);
+}
+
+.legal-page__lead {
+  margin-top: var(--space-6);
+  font-size: var(--font-size-l);
+}
+
+.legal-page__section {
+  margin-top: var(--space-8);
+
+  p,
+  ul,
+  dl {
+    margin-top: var(--space-3);
+  }
+
+  a {
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 0.2em;
+    overflow-wrap: anywhere;
+  }
+}
+
+.legal-page__heading {
+  font-size: var(--font-size-h3);
+}
+
+// Inside the section: more specific than the ul[class] reset, so the bullets come back
+.legal-page__section .legal-page__list {
+  display: grid;
+  gap: var(--space-2);
+  padding-left: var(--space-6);
+  list-style: disc;
+
+  li::marker {
+    color: var(--color-accent);
+  }
+}
+
+// Term/value rows (company details): stacked on phones, two columns from p2
+.legal-page__details {
+  display: grid;
+  gap: var(--space-3);
+
+  div {
+    display: grid;
+    gap: var(--space-1);
+
+    @include breakpoint(p2) {
+      grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+      gap: var(--space-4);
+    }
+  }
+
+  dt {
+    color: var(--color-text-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-weight: var(--font-weight-semibold);
+  }
+}

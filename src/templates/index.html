@@ -7,7 +7,7 @@
     {{> header}}
 
     <!-- prettier-ignore -->
-    <main id="main" class="page__main">
+    <main id="main" class="page__main" tabindex="-1">
       {{> sections/hero}}
       {{> sections/services}}
       <!-- "About us" in the navigation scrolls to the start of this group of sections -->
@@ -20,7 +20,7 @@
       {{> sections/contacts}}
     </main>
 
-    {{> footer}}
+    {{> footer}} {{> cookie-consent}}
 
     <script type="module" src="/scripts/main.js"></script>
   </body>

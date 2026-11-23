@@ -5,12 +5,15 @@
 @use 'base/icons';
 @use 'base/utilities';
 @use 'components/button';
+@use 'components/cookie-consent';
 @use 'components/eyebrow';
 @use 'components/form';
 @use 'components/language-switcher';
 @use 'components/media-placeholder';
 @use 'components/section-header';
+@use 'components/switch';
 @use 'layout/container';
+@use 'layout/legal-page';
 @use 'layout/page';
 @use 'layout/section';
 @use 'layout/site-header';

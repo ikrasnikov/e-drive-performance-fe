@@ -48,3 +48,15 @@
     background-color: var(--color-graphite);
   }
 }
+
+// Outline button on dark backgrounds
+.button--outline-inverse {
+  border-color: var(--color-text-inverse);
+  color: var(--color-text-inverse);
+  background-color: transparent;
+
+  &:hover {
+    color: var(--color-text);
+    background-color: var(--color-text-inverse);
+  }
+}

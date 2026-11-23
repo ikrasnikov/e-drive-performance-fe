@@ -1,0 +1,255 @@
+@use '../abstracts' as *;
+
+// Cookie banner: a dark bar fixed to the bottom of the screen, text and the three choices.
+// Phone: buttons stacked under the text; p4: buttons next to the text.
+.cookie-banner {
+  position: fixed;
+  z-index: 60; // above the sticky header
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  padding-block: var(--space-4);
+  border-top: 3px solid var(--color-accent); // stylelint-disable-line unit-disallowed-list -- thin accent line
+
+  color: var(--color-text-inverse);
+
+  background-color: var(--color-bg-inverse);
+  box-shadow: 0 -0.5rem 2rem rgb(15, 18, 22, 0.25);
+
+  animation: cookie-banner-in var(--transition-base);
+
+  @include breakpoint(p4) {
+    padding-block: var(--space-6);
+  }
+}
+
+@keyframes cookie-banner-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+.cookie-banner__inner {
+  display: grid;
+  gap: var(--space-4);
+
+  @include breakpoint(p4) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-8);
+    align-items: center;
+  }
+}
+
+.cookie-banner__title {
+  font-size: var(--font-size-l);
+}
+
+.cookie-banner__text {
+  font-size: var(--font-size-s);
+  color: var(--color-text-inverse-muted);
+
+  p {
+    max-width: 48rem;
+    margin-top: var(--space-1);
+  }
+
+  a {
+    color: var(--color-text-inverse);
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 0.2em;
+  }
+}
+
+// Phone: the two choices side by side (texts may wrap), the settings link under them.
+// p2+: one row, the settings link first.
+.cookie-banner__actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  align-items: center;
+
+  .button {
+    padding-inline: var(--space-3);
+    white-space: normal;
+  }
+
+  @include breakpoint(p2) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-4);
+
+    .button {
+      padding-inline: var(--space-6);
+      white-space: nowrap;
+    }
+  }
+}
+
+// Secondary action: looks like a link, so the two choices stay the main buttons
+.cookie-banner__settings {
+  cursor: pointer;
+
+  grid-column: 1 / -1;
+  order: 1;
+
+  min-height: 2.75rem;
+  padding: 0;
+  border: 0;
+
+  font: inherit;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-inverse);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 0.125rem;
+  text-underline-offset: 0.25rem;
+
+  background: none;
+
+  @include breakpoint(p2) {
+    order: 0;
+  }
+}
+
+// Settings dialog: native <dialog> (focus trap, Escape and the backdrop come from the browser)
+.cookie-dialog {
+  width: min(100% - 2 * var(--container-gutter), 40rem);
+  max-height: calc(100dvh - 2 * var(--space-4));
+  padding: 0;
+  border: 0;
+  border-top: 3px solid var(--color-accent); // stylelint-disable-line unit-disallowed-list -- thin accent line
+  border-radius: var(--radius-m);
+
+  color: var(--color-text);
+
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-raised);
+
+  &::backdrop {
+    background-color: rgb(15, 18, 22, 0.6);
+  }
+}
+
+// No page scroll behind the open dialog
+:root:has(.cookie-dialog[open]) {
+  overflow: hidden;
+}
+
+.cookie-dialog__body {
+  padding: var(--space-6);
+
+  @include breakpoint(p2) {
+    padding: var(--space-8);
+  }
+}
+
+.cookie-dialog__header {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cookie-dialog__title {
+  font-size: var(--font-size-h3);
+}
+
+.cookie-dialog__close {
+  cursor: pointer;
+
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: calc(-1 * var(--space-2)) calc(-1 * var(--space-2)) 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-s);
+
+  color: inherit;
+
+  background: none;
+
+  &:hover {
+    background-color: var(--color-bg-muted);
+  }
+
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.cookie-dialog__intro {
+  margin-top: var(--space-3);
+  font-size: var(--font-size-s);
+  color: var(--color-text-muted);
+}
+
+.cookie-dialog__categories {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.cookie-category {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-s);
+}
+
+.cookie-category__header {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cookie-category__title {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.cookie-category__title[for] {
+  cursor: pointer;
+}
+
+.cookie-category__status {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+}
+
+.cookie-category__text {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-s);
+  color: var(--color-text-muted);
+}
+
+.cookie-dialog__policy {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-s);
+
+  a {
+    text-decoration-color: var(--color-accent);
+    text-decoration-thickness: 0.125rem;
+    text-underline-offset: 0.2em;
+  }
+}
+
+.cookie-dialog__actions {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+
+  @include breakpoint(p2) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}

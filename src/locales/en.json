@@ -128,9 +128,264 @@
     "contactsTitle": "Contacts",
     "social": "Social media",
     "rights": "All rights reserved.",
-    "legal": "Legal information",
-    "terms": "Terms and conditions",
-    "privacy": "Privacy policy",
-    "cookies": "Cookie policy"
+    "legal": "Legal information"
+  },
+  "legal": {
+    "back": "Back",
+    "updated": "Last updated",
+    "pages": {
+      "privacy": {
+        "label": "Privacy policy",
+        "title": "Privacy policy",
+        "description": "How e-drive performance processes personal data sent through the website and the booking form.",
+        "lead": "This policy describes what personal data we process when you use the website and the booking form, for what purpose, and what rights you have.",
+        "sections": [
+          {
+            "title": "Data controller",
+            "text": [
+              "{{site.company.name}}, UIC {{site.company.uic}}, registered office and address of management: {{site.company.address}}.",
+              "Email: <a href=\"mailto:{{site.contacts.email}}\">{{site.contacts.email}}</a>, phone: <a href=\"{{site.phone.href}}\">{{site.phone.display}}</a>."
+            ]
+          },
+          {
+            "title": "What data we process",
+            "text": [
+              "When you send a request through the website: name, phone, email (optional), preferred date and message (optional).",
+              "We do not collect special categories of personal data. Please do not include them in your message."
+            ]
+          },
+          {
+            "title": "Purposes and legal basis",
+            "text": [
+              "We use the data only to contact you, process your request and provide the service you asked for.",
+              "Legal basis: Art. 6(1)(b) GDPR (steps prior to entering into a contract and performance of a contract) and, where applicable, Art. 6(1)(a) (consent)."
+            ]
+          },
+          {
+            "title": "Retention period",
+            "text": [
+              "We keep the data for as long as needed to process the request and provide the service, and for the period required by law or for the protection of our legitimate interests."
+            ]
+          },
+          {
+            "title": "Recipients",
+            "text": [
+              "The data may be accessible to providers that help us run the website and handle requests: hosting, a form delivery service and communication tools. They process it only on our instructions and for the purposes described here.",
+              "We do not sell data or share it with third parties for marketing."
+            ]
+          },
+          {
+            "title": "Your rights",
+            "text": [
+              "You have the right of access, rectification, erasure, restriction of processing, objection and data portability, and you may withdraw your consent at any time.",
+              "To exercise your rights, write to us at <a href=\"mailto:{{site.contacts.email}}\">{{site.contacts.email}}</a>. You also have the right to lodge a complaint with the <a href=\"{{site.authorities.dataProtection}}\">Commission for Personal Data Protection (CPDP)</a>."
+            ]
+          }
+        ]
+      },
+      "cookies": {
+        "label": "Cookie policy",
+        "title": "Cookie policy",
+        "description": "What cookies the e-drive performance website uses and how to manage your choice.",
+        "lead": "This policy explains what cookies are, which ones the website uses and how you can manage your choice.",
+        "sections": [
+          {
+            "title": "What cookies are",
+            "text": [
+              "Cookies are small text files that a website stores in your browser. We treat similar technologies, such as the browser local storage, the same way."
+            ]
+          },
+          {
+            "title": "Necessary cookies",
+            "text": [
+              "They provide the basic operation and security of the website and remember your cookie choice. They do not require consent and cannot be switched off."
+            ]
+          },
+          {
+            "title": "Analytics cookies (optional)",
+            "text": [
+              "They help us understand how the website is used so we can improve its content. They are stored only if you allow them."
+            ]
+          },
+          {
+            "title": "How to manage cookies",
+            "text": [
+              "You can change your choice at any time with the “Cookie settings” button in the website footer.",
+              "You can also delete or block cookies in your browser settings. Blocking the necessary cookies may break parts of the website."
+            ]
+          },
+          {
+            "title": "Questions",
+            "text": [
+              "Write to us at <a href=\"mailto:{{site.contacts.email}}\">{{site.contacts.email}}</a>. More about personal data in our <a href=\"{{legalHref.privacy}}\">Privacy policy</a>."
+            ]
+          }
+        ]
+      },
+      "terms": {
+        "label": "Terms and conditions",
+        "title": "Terms and conditions",
+        "description": "Terms and conditions of use of the e-drive performance website.",
+        "lead": "By using this website you accept these terms and conditions. Please read them carefully.",
+        "sections": [
+          {
+            "title": "Provider",
+            "text": [
+              "The website is operated by {{site.company.name}}, UIC {{site.company.uic}}, address: {{site.company.address}}. Full company details are in <a href=\"{{legalHref.legalInfo}}\">Legal information</a>."
+            ]
+          },
+          {
+            "title": "Purpose of the website",
+            "text": [
+              "The website provides information about the services of the workshop and a form to request an appointment.",
+              "Sending a request does not conclude a contract. The appointment is confirmed once we contact you."
+            ]
+          },
+          {
+            "title": "Prices and lead times",
+            "text": [
+              "Prices, lead times and terms of each service are agreed individually after the car has been inspected. The information on the website is not an offer."
+            ]
+          },
+          {
+            "title": "Liability",
+            "text": [
+              "We strive to keep the information on the website accurate and up to date, but we are not liable for temporary outages, technical problems or the content of external websites linked from it."
+            ]
+          },
+          {
+            "title": "Intellectual property",
+            "text": [
+              "The texts, images, logo and design of the website are protected by copyright and may not be used without written permission."
+            ]
+          },
+          {
+            "title": "Disputes",
+            "text": [
+              "We aim to resolve any issue directly with you: write to us at <a href=\"mailto:{{site.contacts.email}}\">{{site.contacts.email}}</a>.",
+              "Consumers may also turn to the <a href=\"{{site.authorities.consumerProtection}}\">Commission for Consumer Protection (CCP)</a>. Bulgarian law applies."
+            ]
+          },
+          {
+            "title": "Changes to these terms",
+            "text": [
+              "We may update these terms. The current version and the date of the last change are always on this page."
+            ]
+          }
+        ]
+      },
+      "legalInfo": {
+        "label": "Legal information",
+        "title": "Legal information (Art. 4 of the Electronic Commerce Act)",
+        "description": "Details of the service provider under Art. 4 of the Bulgarian Electronic Commerce Act.",
+        "lead": "Information about the information society service provider under Art. 4 of the Bulgarian Electronic Commerce Act.",
+        "sections": [
+          {
+            "title": "Provider details",
+            "items": [
+              {
+                "term": "Company name",
+                "value": "{{site.company.name}}"
+              },
+              {
+                "term": "UIC",
+                "value": "{{site.company.uic}}"
+              },
+              {
+                "term": "VAT number",
+                "value": "{{site.company.vat}}"
+              },
+              {
+                "term": "Registered office and address of management",
+                "value": "{{site.company.address}}"
+              },
+              {
+                "term": "Represented by",
+                "value": "{{site.company.representative}}"
+              },
+              {
+                "term": "Registration",
+                "value": "Commercial Register and Register of Non-Profit Legal Entities at the Registry Agency"
+              },
+              {
+                "term": "Email",
+                "value": "<a href=\"mailto:{{site.contacts.email}}\">{{site.contacts.email}}</a>"
+              },
+              {
+                "term": "Phone",
+                "value": "<a href=\"{{site.phone.href}}\">{{site.phone.display}}</a>"
+              }
+            ]
+          },
+          {
+            "title": "Supervisory authorities",
+            "items": [
+              {
+                "term": "Consumer protection",
+                "value": "<a href=\"{{site.authorities.consumerProtection}}\">Commission for Consumer Protection (CCP)</a>"
+              },
+              {
+                "term": "Personal data protection",
+                "value": "<a href=\"{{site.authorities.dataProtection}}\">Commission for Personal Data Protection (CPDP)</a>"
+              }
+            ]
+          }
+        ]
+      },
+      "accessibility": {
+        "label": "Accessibility statement",
+        "title": "Accessibility statement",
+        "description": "How we make the e-drive performance website accessible and how to report a problem.",
+        "lead": "We want the e-drive performance website to be easy to use for everyone, including people with disabilities.",
+        "sections": [
+          {
+            "title": "Standard",
+            "text": [
+              "We build the website following the Web Content Accessibility Guidelines WCAG 2.2, level AA."
+            ]
+          },
+          {
+            "title": "What we have done",
+            "list": [
+              "a clear structure of pages and headings;",
+              "keyboard navigation and a visible focus indicator;",
+              "text alternatives for images;",
+              "sufficient text contrast;",
+              "reduced animations when the system “reduce motion” setting is on;",
+              "a website in four languages with the page language marked correctly."
+            ]
+          },
+          {
+            "title": "Known limitations",
+            "text": [
+              "Despite our efforts, some parts of the website may not be fully accessible yet. We keep working on them."
+            ]
+          },
+          {
+            "title": "Feedback",
+            "text": [
+              "If you run into a problem, write to us at <a href=\"mailto:{{site.contacts.email}}\">{{site.contacts.email}}</a> or call <a href=\"{{site.phone.href}}\">{{site.phone.display}}</a>. We will reply within a reasonable time and offer another way to get the information or service."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "cookieConsent": {
+    "bannerTitle": "We use cookies",
+    "bannerText": "Necessary cookies keep the website working. With your consent we will also use analytics cookies to improve the website. More in our <a href=\"{{legalHref.cookies}}\">Cookie policy</a>.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Necessary only",
+    "settings": "Settings",
+    "settingsTitle": "Cookie settings",
+    "dialogText": "Choose which cookies you allow. You can change your choice at any time from the website footer.",
+    "necessaryTitle": "Necessary",
+    "necessaryText": "They provide the basic operation and security of the website and remember your choice. They cannot be switched off.",
+    "alwaysOn": "Always on",
+    "analyticsTitle": "Analytics",
+    "analyticsText": "They help us understand how the website is used so we can improve it.",
+    "policyLink": "Cookie policy",
+    "save": "Save choice",
+    "close": "Close"
   }
 }

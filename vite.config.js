@@ -2,7 +2,7 @@ import { resolve } from 'node:path';
 
 import { defineConfig } from 'vite';
 
-import { DEFAULT_LOCALE, i18nPages, LOCALES } from './build/i18n-pages.js';
+import { i18nPages, pageEntries } from './build/i18n-pages.js';
 
 const root = resolve(import.meta.dirname, 'src');
 
@@ -18,12 +18,8 @@ export default defineConfig({
     outDir: resolve(import.meta.dirname, 'dist'),
     emptyOutDir: true,
     rollupOptions: {
-      input: Object.fromEntries(
-        LOCALES.map((locale) => [
-          locale,
-          resolve(root, locale === DEFAULT_LOCALE ? 'index.html' : `${locale}/index.html`),
-        ]),
-      ),
+      // One page per language and page: index.html, en/index.html, en/privacy-policy/index.html...
+      input: pageEntries(root),
     },
   },
   plugins: [i18nPages({ root, base, siteUrl })],

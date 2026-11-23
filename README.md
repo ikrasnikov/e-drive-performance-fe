@@ -41,18 +41,24 @@ The dev server runs at http://localhost:5173. `npm install` also sets up the git
 | Russian   | `/ru/` | `src/locales/ru.json` |
 | Ukrainian | `/ua/` | `src/locales/ua.json` |
 
-The page markup lives in a single template, `src/templates/index.html` (+ `partials/`, sections in
-`partials/sections/`, included as `{{> sections/hero}}`), written in
-[Handlebars](https://handlebarsjs.com). At build time `build/i18n-pages.js` renders it once per
-language into a separate static page. Texts are referenced as `{{t.section.key}}`.
+The markup lives in templates written in [Handlebars](https://handlebarsjs.com): the home page in
+`src/templates/index.html`, the legal documents (privacy policy, cookie policy, terms, legal
+information, accessibility statement) in `src/templates/legal.html`; shared parts in `partials/`,
+sections in `partials/sections/`, included as `{{> sections/hero}}`. At build time
+`build/i18n-pages.js` renders every page once per language into a separate static page
+(`/`, `/en/`, `/privacy-policy/`, `/en/privacy-policy/`, ...). Texts are referenced as
+`{{t.section.key}}`.
 
 - Every key must exist in all four locale files, otherwise the build fails with the list of
   missing keys.
 - Non-translatable data (phone, language names and the list of services with their icons)
   lives in `src/data/site.json` and is available in templates as `{{site.*}}`. Texts for items
   from it are looked up by id: `{{tr "services" id "title"}}` → `t.services.<id>.title`.
-- `src/index.html`, `src/en/index.html`, ... are only entry stubs that define the page URLs: do
-  not put markup there.
+- The entry HTML files of the pages are virtual (the plugin serves them), the list of pages and
+  their URLs is in `build/i18n-pages.js`.
+- The legal texts are in `legal.pages` of the locale files. They may contain markup and data:
+  `{{site.contacts.email}}`, `{{legalHref.privacy}}`; company details are placeholders in
+  `site.company` until the real ones are known.
 - The Ukrainian page lives under `/ua/`, but its `lang` / `hreflang` is `uk` (the ISO language
   code).
 

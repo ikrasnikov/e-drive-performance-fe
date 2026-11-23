@@ -36,10 +36,10 @@
         {{t.footer.navigationTitle}}
       </h2>
       <ul class="site-footer__links">
-        <li><a href="#services">{{t.nav.services}}</a></li>
-        <li><a href="#about">{{t.nav.about}}</a></li>
-        <li><a href="#advantages">{{t.nav.advantages}}</a></li>
-        <li><a href="#contacts">{{t.nav.contacts}}</a></li>
+        <li><a href="{{sectionHref}}#services">{{t.nav.services}}</a></li>
+        <li><a href="{{sectionHref}}#about">{{t.nav.about}}</a></li>
+        <li><a href="{{sectionHref}}#advantages">{{t.nav.advantages}}</a></li>
+        <li><a href="{{sectionHref}}#contacts">{{t.nav.contacts}}</a></li>
       </ul>
     </nav>
 
@@ -74,12 +74,23 @@
 
     <div class="site-footer__bottom">
       <p>© {{year}} e-drive performance. {{t.footer.rights}}</p>
-      <!-- TODO: replace the placeholder links when the legal pages exist -->
       <nav aria-label="{{t.footer.legal}}">
         <ul class="site-footer__legal">
-          <li><a href="#">{{t.footer.terms}}</a></li>
-          <li><a href="#privacy">{{t.footer.privacy}}</a></li>
-          <li><a href="#cookies">{{t.footer.cookies}}</a></li>
+          {{#each legalPages}}
+          <li>
+            <a href="{{href}}" aria-current="{{ariaCurrent}}">{{label}}</a>
+          </li>
+          {{/each}}
+          <li>
+            <!-- Opens the cookie settings dialog (scripts/components/cookie-consent.js) -->
+            <button
+              class="site-footer__cookie-settings"
+              type="button"
+              data-cookie-settings
+            >
+              {{t.cookieConsent.settingsTitle}}
+            </button>
+          </li>
         </ul>
       </nav>
     </div>

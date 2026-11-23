@@ -17,16 +17,24 @@
     >
       <ul class="site-nav__list">
         <li class="site-nav__item">
-          <a class="site-nav__link" href="#services">{{t.nav.services}}</a>
+          <a class="site-nav__link" href="{{sectionHref}}#services"
+            >{{t.nav.services}}</a
+          >
         </li>
         <li class="site-nav__item">
-          <a class="site-nav__link" href="#about">{{t.nav.about}}</a>
+          <a class="site-nav__link" href="{{sectionHref}}#about"
+            >{{t.nav.about}}</a
+          >
         </li>
         <li class="site-nav__item">
-          <a class="site-nav__link" href="#advantages">{{t.nav.advantages}}</a>
+          <a class="site-nav__link" href="{{sectionHref}}#advantages"
+            >{{t.nav.advantages}}</a
+          >
         </li>
         <li class="site-nav__item">
-          <a class="site-nav__link" href="#contacts">{{t.nav.contacts}}</a>
+          <a class="site-nav__link" href="{{sectionHref}}#contacts"
+            >{{t.nav.contacts}}</a
+          >
         </li>
       </ul>
 
@@ -104,7 +112,10 @@
         </ul>
       </div>
 
-      <a class="button button--primary site-header__cta" href="#booking">
+      <a
+        class="button button--primary site-header__cta"
+        href="{{sectionHref}}#booking"
+      >
         {{icon "calendar_month"}}
         <span class="site-header__cta-text">{{t.nav.book}}</span>
       </a>

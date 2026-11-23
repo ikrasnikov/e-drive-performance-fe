@@ -208,7 +208,9 @@
     }
   }
 
-  a {
+  a,
+  button {
+    font: inherit;
     color: var(--color-text-inverse-muted);
     text-decoration: none;
 
@@ -217,4 +219,16 @@
       text-decoration: underline;
     }
   }
+
+  [aria-current='page'] {
+    color: var(--color-text-inverse);
+  }
+}
+
+// Looks like the links next to it, but opens the cookie settings instead of a page
+.site-footer__cookie-settings {
+  cursor: pointer;
+  padding: 0;
+  border: 0;
+  background: none;
 }

@@ -1,0 +1,119 @@
+<!-- Cookie consent: shown by scripts/components/cookie-consent.js until the visitor makes a choice -->
+<section
+  class="cookie-banner"
+  aria-labelledby="cookie-banner-title"
+  data-cookie-banner
+  hidden
+>
+  <div class="container cookie-banner__inner">
+    <div class="cookie-banner__text">
+      <h2 id="cookie-banner-title" class="cookie-banner__title">
+        {{t.cookieConsent.bannerTitle}}
+      </h2>
+      <p>{{rich t.cookieConsent.bannerText}}</p>
+    </div>
+    <div class="cookie-banner__actions">
+      <button
+        class="cookie-banner__settings"
+        type="button"
+        data-cookie-settings
+      >
+        {{t.cookieConsent.settings}}
+      </button>
+      <button
+        class="button button--outline-inverse"
+        type="button"
+        data-consent="reject"
+      >
+        {{t.cookieConsent.rejectAll}}
+      </button>
+      <button
+        class="button button--primary"
+        type="button"
+        data-consent="accept"
+      >
+        {{t.cookieConsent.acceptAll}}
+      </button>
+    </div>
+  </div>
+</section>
+
+<dialog
+  class="cookie-dialog"
+  aria-labelledby="cookie-dialog-title"
+  data-cookie-dialog
+>
+  <div class="cookie-dialog__body">
+    <div class="cookie-dialog__header">
+      <h2 id="cookie-dialog-title" class="cookie-dialog__title">
+        {{t.cookieConsent.settingsTitle}}
+      </h2>
+      <button
+        class="cookie-dialog__close"
+        type="button"
+        aria-label="{{t.cookieConsent.close}}"
+        data-cookie-dialog-close
+      >
+        {{icon "close"}}
+      </button>
+    </div>
+
+    <p class="cookie-dialog__intro">{{t.cookieConsent.dialogText}}</p>
+
+    <ul class="cookie-dialog__categories">
+      <li class="cookie-category">
+        <div class="cookie-category__header">
+          <h3 class="cookie-category__title">
+            {{t.cookieConsent.necessaryTitle}}
+          </h3>
+          <span class="cookie-category__status">
+            {{t.cookieConsent.alwaysOn}}
+          </span>
+        </div>
+        <p class="cookie-category__text">{{t.cookieConsent.necessaryText}}</p>
+      </li>
+      <li class="cookie-category">
+        <div class="cookie-category__header">
+          <label class="cookie-category__title" for="cookie-analytics">
+            {{t.cookieConsent.analyticsTitle}}
+          </label>
+          <input
+            id="cookie-analytics"
+            class="switch"
+            type="checkbox"
+            role="switch"
+            aria-describedby="cookie-analytics-text"
+            data-consent-analytics
+          />
+        </div>
+        <p id="cookie-analytics-text" class="cookie-category__text">
+          {{t.cookieConsent.analyticsText}}
+        </p>
+      </li>
+    </ul>
+
+    <p class="cookie-dialog__policy">
+      <a href="{{legalHref.cookies}}">{{t.cookieConsent.policyLink}}</a>
+    </p>
+
+    <div class="cookie-dialog__actions">
+      <button
+        class="button button--outline"
+        type="button"
+        data-consent="reject"
+      >
+        {{t.cookieConsent.rejectAll}}
+      </button>
+      <button class="button button--outline" type="button" data-consent="save">
+        {{t.cookieConsent.save}}
+      </button>
+      <button
+        class="button button--primary"
+        type="button"
+        data-consent="accept"
+      >
+        {{t.cookieConsent.acceptAll}}
+      </button>
+    </div>
+  </div>
+</dialog>

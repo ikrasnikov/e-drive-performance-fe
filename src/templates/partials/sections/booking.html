@@ -115,8 +115,12 @@
           </button>
           <p class="booking-form__consent">
             {{t.booking.consentText}}
-            <!-- TODO: link to the privacy policy page when it exists -->
-            <a href="#privacy">{{t.booking.consentLink}}</a>.
+            <!-- New tab: the visitor keeps what is already typed in the form -->
+            <a href="{{legalHref.privacy}}" target="_blank" rel="noopener"
+              >{{t.booking.consentLink}}<span class="visually-hidden">
+                ({{t.contacts.newTab}})</span
+              ></a
+            >.
           </p>
         </div>
 
