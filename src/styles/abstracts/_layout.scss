@@ -1,0 +1,44 @@
+// Shared building blocks of the "text + media bleeding to the viewport edge" sections
+// (hero, diagnostics, repair).
+
+// Grid lines: full-start | gutter | content-start | first column | split | second column |
+// content-end | gutter | full-end. $first-share is the part of the container taken by the first
+// column (e.g. var(--hero-content-share) = 5 / 12). Media spans to full-start or full-end.
+@mixin bleed-grid($first-share) {
+  grid-template-columns:
+    [full-start] minmax(var(--container-gutter), 1fr)
+    [content-start] minmax(0, calc(var(--container-max-width) * #{$first-share}))
+    [split] minmax(0, calc(var(--container-max-width) * (1 - #{$first-share})))
+    [content-end] minmax(var(--container-gutter), 1fr)
+    [full-end];
+}
+
+// Fades the media itself into the section background; eased stops so the fade has no visible
+// start or end line. $direction: 90deg = transparent on the left, 270deg = on the right.
+@mixin media-fade($direction, $fade) {
+  mask-image: linear-gradient(
+    $direction,
+    transparent 0%,
+    rgb(0, 0, 0, 0.1) calc(#{$fade} * 0.25),
+    rgb(0, 0, 0, 0.35) calc(#{$fade} * 0.5),
+    rgb(0, 0, 0, 0.75) calc(#{$fade} * 0.75),
+    #000 $fade
+  );
+}
+
+// Accent stripe for a ::before/::after of an absolutely positionable parent: wide and opaque at
+// the top, narrowing and fading out towards the bottom. $run = horizontal distance the stripe
+// travels from top to bottom, $top / $bottom = stripe width at the top / bottom.
+@mixin tapered-stripe($run, $top, $bottom) {
+  content: '';
+
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+
+  width: $run;
+
+  background: linear-gradient(180deg, var(--color-accent) -20%, rgb(255, 193, 7, 0) 80%);
+  clip-path: polygon(calc(#{$run} - #{$top}) 0, $run 0, $bottom 100%, 0 100%);
+}

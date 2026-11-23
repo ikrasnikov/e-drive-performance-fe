@@ -1,0 +1,126 @@
+@use '../abstracts' as *;
+
+// Same composition as the hero: text with a checklist on the left, media on the right bleeding to
+// the viewport edge, fading in from the left with the tapered accent stripe over the fade.
+// Phone/tablet: text, then full-width media below, fading in from the top.
+.repair {
+  --repair-content-share: 5 / 12;
+  --repair-fade: 35%;
+  --repair-stripe-run: 12rem;
+  --repair-stripe-top: 2.5rem;
+  --repair-stripe-bottom: 1rem;
+  --repair-stripe-overhang: 2rem;
+
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--color-bg-muted) 0%, var(--color-bg) 100%);
+}
+
+.repair__layout {
+  display: grid;
+  gap: var(--space-8);
+
+  @include breakpoint(p4) {
+    @include bleed-grid(var(--repair-content-share));
+
+    gap: 0;
+    min-height: clamp(26rem, 36vw, 34rem);
+  }
+}
+
+.repair__content {
+  padding: var(--space-section) var(--container-gutter) 0;
+
+  @include breakpoint(p4) {
+    grid-column: content-start / split;
+    align-self: center;
+    padding: var(--space-section) var(--space-8) var(--space-section) 0;
+  }
+}
+
+// Short accent bar above the title, as in the design
+.repair__title {
+  font-size: var(--font-size-h2-compact);
+
+  &::before {
+    content: '';
+
+    display: block;
+
+    width: 2.5rem;
+    height: 0.25rem;
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-s);
+
+    background-color: var(--color-accent);
+  }
+}
+
+.repair__text {
+  max-width: 32rem;
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+.repair__list {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.repair__item {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-weight: var(--font-weight-semibold);
+}
+
+// Decorative: the text next to it carries the meaning, so the low-contrast accent is fine here.
+// Material Symbols ship one weight (400), so the check is made bolder with a stroke around its
+// shape (in viewBox units: the icon box is 960 units wide).
+.repair__check {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  color: var(--color-accent);
+
+  stroke: currentcolor;
+  stroke-linejoin: round;
+  stroke-width: 60;
+}
+
+.repair__media {
+  position: relative;
+
+  @include breakpoint(p4) {
+    grid-column: split / full-end;
+  }
+
+  &::before {
+    @include breakpoint(p4) {
+      @include tapered-stripe(
+        var(--repair-stripe-run),
+        var(--repair-stripe-top),
+        var(--repair-stripe-bottom)
+      );
+
+      left: calc(-1 * var(--repair-stripe-overhang));
+    }
+  }
+}
+
+.repair__media-frame {
+  aspect-ratio: 16 / 10;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 25%);
+
+  @include breakpoint(p2) {
+    aspect-ratio: 2 / 1;
+  }
+
+  @include breakpoint(p4) {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: auto;
+
+    @include media-fade(90deg, var(--repair-fade));
+  }
+}

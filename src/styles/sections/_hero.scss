@@ -21,12 +21,8 @@
   padding-top: var(--space-8);
 
   @include breakpoint(p4) {
-    grid-template-columns:
-      [full-start] minmax(var(--container-gutter), 1fr)
-      [content-start] minmax(0, calc(var(--container-max-width) * var(--hero-content-share)))
-      [media-start] minmax(0, calc(var(--container-max-width) * (1 - var(--hero-content-share))))
-      [content-end] minmax(var(--container-gutter), 1fr)
-      [full-end];
+    @include bleed-grid(var(--hero-content-share));
+
     gap: 0;
     min-height: clamp(28rem, 40vw, 38rem);
     padding-top: 0;
@@ -38,7 +34,7 @@
   padding-inline: var(--container-gutter);
 
   @include breakpoint(p4) {
-    grid-column: content-start / media-start;
+    grid-column: content-start / split;
     align-self: center;
     padding: var(--space-section) var(--space-8) var(--space-section) 0;
   }
@@ -70,29 +66,19 @@
   position: relative;
 
   @include breakpoint(p4) {
-    grid-column: media-start / full-end;
+    grid-column: split / full-end;
   }
 
   // Accent stripe: wide and opaque at the top, narrowing and fading out towards the bottom
   &::before {
     @include breakpoint(p4) {
-      content: '';
-
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      bottom: 0;
-      left: calc(-1 * var(--hero-stripe-overhang));
-
-      width: var(--hero-stripe-run);
-
-      background: linear-gradient(180deg, var(--color-accent) -20%, rgb(255, 193, 7, 0) 80%);
-      clip-path: polygon(
-        calc(var(--hero-stripe-run) - var(--hero-stripe-top)) 0,
-        var(--hero-stripe-run) 0,
-        var(--hero-stripe-bottom) 100%,
-        0 100%
+      @include tapered-stripe(
+        var(--hero-stripe-run),
+        var(--hero-stripe-top),
+        var(--hero-stripe-bottom)
       );
+
+      left: calc(-1 * var(--hero-stripe-overhang));
     }
   }
 }
@@ -111,14 +97,7 @@
     position: absolute;
     inset: 0;
     aspect-ratio: auto;
-    // Eased stops instead of a linear ramp, so the fade has no visible start or end line
-    mask-image: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgb(0, 0, 0, 0.1) calc(var(--hero-fade) * 0.25),
-      rgb(0, 0, 0, 0.35) calc(var(--hero-fade) * 0.5),
-      rgb(0, 0, 0, 0.75) calc(var(--hero-fade) * 0.75),
-      #000 var(--hero-fade)
-    );
+
+    @include media-fade(90deg, var(--hero-fade));
   }
 }

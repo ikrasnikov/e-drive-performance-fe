@@ -60,6 +60,16 @@
       "systemCheck": "Full system check"
     }
   },
+  "repair": {
+    "title": "Manufacturer-level repair and maintenance",
+    "text": "Quality service, modern equipment and experience with every Tesla model.",
+    "items": {
+      "mechanical": "Mechanical and electrical repairs",
+      "highVoltage": "High-voltage system work",
+      "components": "Component replacement and recycling",
+      "thermal": "Cooling and thermal system maintenance"
+    }
+  },
   "footer": {
     "rights": "© e-drive performance. All rights reserved."
   }

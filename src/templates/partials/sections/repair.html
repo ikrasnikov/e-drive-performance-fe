@@ -1,0 +1,25 @@
+<section id="repair" class="repair" aria-labelledby="repair-title">
+  <div class="repair__layout">
+    <div class="repair__content">
+      <h2 id="repair-title" class="repair__title">{{t.repair.title}}</h2>
+      <p class="repair__text">{{t.repair.text}}</p>
+
+      <ul class="repair__list">
+        {{#each site.repair}}
+        <li class="repair__item">
+          {{icon "check" class="repair__check"}} {{tr "repair" "items" this}}
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="repair__media">
+      <!-- Placeholder: will be replaced by a photo of the workshop -->
+      <div class="repair__media-frame">
+        <div class="media-placeholder" aria-hidden="true">
+          {{icon "car_repair" class="media-placeholder__icon"}}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

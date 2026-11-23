@@ -44,5 +44,6 @@
       "id": "systemCheck",
       "icon": "brand:diagnostics/system-check"
     }
-  ]
+  ],
+  "repair": ["mechanical", "highVoltage", "components", "thermal"]
 }
